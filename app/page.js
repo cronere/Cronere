@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const CALENDLY = 'https://calendly.com/jacob-merkley'
+const CALENDLY = 'https://calendly.com/jacobmerkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
 
 const LogoMark = ({ size = 32 }) => (
@@ -269,6 +269,51 @@ export default function Home() {
         }
         .cred-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
         .cred-desc { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+
+        /* ── WHY CRONERE ── */
+        .why-cronere {
+          background: var(--bg);
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        }
+        .why-inner {
+          display: flex; gap: 4rem; align-items: center;
+        }
+        .why-text { flex: 1; }
+        .why-text h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .why-text p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; }
+        .why-text p:last-child { margin-bottom: 0; }
+        .why-text em { font-style: normal; color: var(--gold); }
+        .why-code {
+          flex-shrink: 0;
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 1.75rem 2rem;
+          min-width: 260px;
+        }
+        .why-code-label {
+          font-family: var(--mono);
+          font-size: 9px; letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--text-dim);
+          margin-bottom: 1rem;
+          display: block;
+        }
+        .why-code pre {
+          font-family: var(--mono);
+          font-size: 13px;
+          color: var(--text-mid);
+          line-height: 1.8;
+          white-space: pre;
+        }
+        .why-code pre .kw { color: var(--blue); }
+        .why-code pre .val { color: var(--gold); }
+        .why-code pre .cm { color: var(--text-dim); }
+        @media (max-width: 720px) {
+          .why-inner { flex-direction: column; gap: 2rem; }
+          .why-code { min-width: unset; width: 100%; }
+        }
 
         /* ── FAQ ── */
         .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
