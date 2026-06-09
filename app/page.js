@@ -1,0 +1,567 @@
+'use client'
+
+const CALENDLY = 'https://calendly.com/jacobmerkley'
+const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
+
+const LogoMark = ({ size = 32 }) => (
+  <svg width={size} height={size} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#5B9BFF" />
+        <stop offset="100%" stopColor="#2563EB" />
+      </linearGradient>
+    </defs>
+    <rect width="512" height="512" rx="112" fill="url(#logoGrad)" />
+    <path d="M138 154 L90 256 L138 358" stroke="white" strokeWidth="26" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.5" />
+    <path d="M374 154 L422 256 L374 358" stroke="white" strokeWidth="26" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.5" />
+    <path d="M168 256 L210 256 L234 192 L278 320 L302 256 L344 256" stroke="white" strokeWidth="26" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+)
+
+const LinkedInIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+)
+
+export default function Home() {
+  return (
+    <>
+      <style>{`
+        /* ── NAV ── */
+        .nav {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0 2rem; height: 68px;
+          background: rgba(11,15,26,0.88);
+          backdrop-filter: blur(14px);
+          border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; }
+        .nav-wordmark { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; color: var(--text); }
+        .nav-wordmark span { color: var(--blue); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 15px; color: var(--text-mid); transition: color 0.15s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+          background: var(--gold) !important;
+          color: #0b0f1a !important;
+          font-weight: 600 !important;
+          padding: 9px 20px;
+          border-radius: 7px;
+          font-size: 14px !important;
+          transition: opacity 0.15s !important;
+        }
+        .nav-cta:hover { opacity: 0.85 !important; }
+
+        /* ── LAYOUT ── */
+        .section { padding: 6rem 2rem; }
+        .section-alt { background: var(--bg-2); }
+        .container { max-width: 980px; margin: 0 auto; }
+        .eyebrow {
+          display: block;
+          font-family: var(--mono);
+          font-size: 11px;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--gold);
+          margin-bottom: 1rem;
+        }
+        .section-title {
+          font-size: clamp(28px, 4vw, 40px);
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          line-height: 1.15;
+          margin-bottom: 0.75rem;
+        }
+        .section-sub {
+          font-size: 17px;
+          color: var(--text-mid);
+          max-width: 540px;
+          line-height: 1.7;
+        }
+        .section-header { margin-bottom: 3rem; }
+
+        /* ── HERO ── */
+        .hero {
+          padding-top: 9rem; padding-bottom: 6rem;
+          padding-left: 2rem; padding-right: 2rem;
+          position: relative; overflow: hidden;
+        }
+        .hero-grid {
+          position: absolute; inset: 0;
+          background-image:
+            linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px);
+          background-size: 48px 48px;
+          mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+        }
+        .hero-glow {
+          position: absolute; width: 700px; height: 400px;
+          border-radius: 50%;
+          background: radial-gradient(ellipse, rgba(245,166,35,0.07) 0%, transparent 70%);
+          top: -80px; left: 50%; transform: translateX(-50%);
+          pointer-events: none;
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+        .hero-badge {
+          display: inline-flex; align-items: center; gap: 8px;
+          background: var(--gold-dim);
+          border: 1px solid var(--gold-bdr);
+          border-radius: 100px;
+          padding: 6px 16px 6px 12px;
+          margin-bottom: 2rem;
+        }
+        .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+        .hero-badge span { font-size: 13px; color: var(--gold); font-weight: 500; }
+        .hero-h1 {
+          font-size: clamp(38px, 6vw, 66px);
+          font-weight: 800;
+          line-height: 1.07;
+          letter-spacing: -0.03em;
+          margin-bottom: 1.5rem;
+        }
+        .hero-h1 em { font-style: normal; color: var(--gold); }
+        .hero-sub {
+          font-size: 19px;
+          color: var(--text-mid);
+          max-width: 560px;
+          line-height: 1.7;
+          margin-bottom: 2.5rem;
+        }
+        .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+        .btn-primary {
+          display: inline-flex; align-items: center; gap: 8px;
+          background: var(--gold); color: #0b0f1a;
+          font-weight: 700; font-size: 15px;
+          padding: 14px 26px; border-radius: 8px;
+          transition: opacity 0.15s, transform 0.15s;
+        }
+        .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-ghost {
+          display: inline-flex; align-items: center; gap: 6px;
+          color: var(--text-mid); font-size: 15px;
+          transition: color 0.15s;
+        }
+        .btn-ghost:hover { color: var(--text); }
+        .hero-stats {
+          display: flex; gap: 3rem; flex-wrap: wrap;
+          padding-top: 2.5rem;
+          border-top: 1px solid var(--border);
+        }
+        .stat-num { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); line-height: 1; margin-bottom: 0.35rem; }
+        .stat-num span { color: var(--gold); }
+        .stat-label { font-size: 14px; color: var(--text-mid); }
+
+        /* ── HOW IT WORKS ── */
+        .how-steps {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1px; background: var(--border);
+          border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+        }
+        .how-step { background: var(--bg-card); padding: 2rem 1.75rem; }
+        .how-step-num { font-family: var(--mono); font-size: 11px; color: var(--gold); margin-bottom: 0.75rem; letter-spacing: 0.08em; }
+        .how-step h3 { font-size: 17px; font-weight: 600; margin-bottom: 0.6rem; }
+        .how-step p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+
+        /* ── WORKFLOWS ── */
+        .workflow-cat {
+          font-family: var(--mono); font-size: 10px;
+          letter-spacing: 0.18em; text-transform: uppercase;
+          color: var(--text-dim); margin: 2.5rem 0 1rem;
+        }
+        .workflow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+        .workflow-card {
+          background: var(--bg-card); border: 1px solid var(--border);
+          border-radius: 10px; padding: 1.5rem;
+          transition: border-color 0.2s;
+        }
+        .workflow-card:hover { border-color: var(--border-h); }
+        .workflow-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
+        .workflow-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+        .workflow-save { font-family: var(--mono); font-size: 12px; color: var(--green); margin-top: 0.75rem; }
+
+        /* ── PRICING ── */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .pricing-card {
+          background: var(--bg-card); border: 1px solid var(--border);
+          border-radius: 10px; padding: 2.25rem; position: relative;
+        }
+        .pricing-card.featured { border-color: var(--gold-bdr); background: linear-gradient(160deg, #17213a 0%, #131b2e 100%); }
+        .featured-pill {
+          position: absolute; top: -1px; right: 22px;
+          background: var(--gold); color: #0b0f1a;
+          font-family: var(--mono); font-size: 10px; font-weight: 600;
+          letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 4px 12px; border-radius: 0 0 7px 7px;
+        }
+        .pricing-tier { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.75rem; }
+        .pricing-price { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.2rem; }
+        .pricing-price sub { font-size: 16px; font-weight: 400; color: var(--text-mid); vertical-align: baseline; }
+        .pricing-desc { font-size: 15px; color: var(--text-mid); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .pricing-desc strong { color: var(--gold); }
+        .pricing-features { list-style: none; margin-bottom: 2rem; }
+        .pricing-features li { font-size: 14px; color: var(--text-mid); padding: 0.35rem 0; display: flex; gap: 10px; }
+        .pricing-features li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: 12px; margin-top: 3px; }
+        .pricing-meta { border-top: 1px solid var(--border); padding-top: 1.25rem; }
+        .pricing-meta-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 0.5rem; }
+        .pricing-meta-row .lbl { color: var(--text-dim); }
+        .pricing-meta-row .val { font-family: var(--mono); color: var(--text-mid); }
+        .pricing-meta-row .val.hi { color: var(--green); }
+        .pricing-note {
+          background: var(--bg-card); border: 1px solid var(--border);
+          border-radius: 10px; padding: 1.5rem 1.75rem;
+          font-size: 15px; color: var(--text-mid); line-height: 1.7;
+        }
+        .pricing-note strong { color: var(--text); }
+
+        /* ── ABOUT ── */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .about-text h2 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+        .about-text p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 1rem; }
+        .about-text p:last-child { margin-bottom: 0; }
+        .about-link { display: inline-flex; align-items: center; gap: 7px; color: var(--gold); font-size: 14px; font-weight: 500; transition: opacity 0.15s; }
+        .about-link:hover { opacity: 0.8; }
+        .creds { display: flex; flex-direction: column; gap: 0.85rem; }
+        .cred {
+          display: flex; align-items: flex-start; gap: 14px;
+          background: var(--bg-card); border: 1px solid var(--border);
+          border-radius: 9px; padding: 1.1rem 1.25rem;
+        }
+        .cred-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+        .cred-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+        .cred-desc { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+
+        /* ── FAQ ── */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; }
+        .faq-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; }
+        .faq-item p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+        /* ── CONTACT ── */
+        .contact-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+        .contact-inner h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .contact-inner h2 em { font-style: normal; color: var(--gold); }
+        .contact-inner p { font-size: 17px; color: var(--text-mid); margin-bottom: 2.5rem; line-height: 1.7; }
+        .contact-actions { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+        .btn-large {
+          display: inline-flex; align-items: center; gap: 10px;
+          background: var(--gold); color: #0b0f1a;
+          font-weight: 700; font-size: 16px;
+          padding: 16px 34px; border-radius: 9px;
+          transition: opacity 0.15s, transform 0.15s;
+        }
+        .btn-large:hover { opacity: 0.88; transform: translateY(-1px); }
+        .contact-li { display: inline-flex; align-items: center; gap: 8px; color: var(--text-mid); font-size: 15px; transition: color 0.15s; }
+        .contact-li:hover { color: var(--text); }
+
+        /* ── FOOTER ── */
+        .footer {
+          border-top: 1px solid var(--border);
+          padding: 1.75rem 2rem;
+          display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-logo { display: flex; align-items: center; gap: 9px; }
+        .footer-wordmark { font-size: 17px; font-weight: 700; color: var(--text-mid); }
+        .footer-wordmark span { color: var(--blue); }
+        .footer-right { font-size: 13px; color: var(--text-dim); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 720px) {
+          .nav-links { display: none; }
+          .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+          .faq-grid { grid-template-columns: 1fr; }
+          .hero-stats { gap: 2rem; }
+          .section { padding: 4rem 1.25rem; }
+          .hero { padding-top: 7.5rem; padding-left: 1.25rem; padding-right: 1.25rem; }
+          .nav { padding: 0 1.25rem; }
+        }
+      `}</style>
+
+      {/* NAV */}
+      <nav className="nav">
+        <div className="nav-logo">
+          <LogoMark size={32} />
+          <span className="nav-wordmark">cron<span>e</span>re</span>
+        </div>
+        <div className="nav-links">
+          <a href="#how">How it works</a>
+          <a href="#workflows">Workflows</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+          <a href="#faq">FAQ</a>
+          <a href={CALENDLY} target="_blank" rel="noreferrer" className="nav-cta">Book a call →</a>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="hero" id="hero">
+        <div className="hero-grid" />
+        <div className="hero-glow" />
+        <div className="hero-inner">
+          <div className="hero-badge">
+            <div className="hero-badge-dot" />
+            <span>Built for CPA &amp; Accounting Firms</span>
+          </div>
+          <h1 className="hero-h1">
+            Your firm runs on time.<br />
+            Stop wasting it on <em>manual work.</em>
+          </h1>
+          <p className="hero-sub">
+            Cronere builds and manages AI-powered workflows that eliminate the repetitive back-office tasks eating your team's hours — so you focus on clients, not administrivia.
+          </p>
+          <div className="hero-actions">
+            <a href={CALENDLY} target="_blank" rel="noreferrer" className="btn-primary">
+              Book a free discovery call →
+            </a>
+            <a href="#workflows" className="btn-ghost">See what gets automated ↓</a>
+          </div>
+          <div className="hero-stats">
+            <div>
+              <div className="stat-num">10–20<span> hrs</span></div>
+              <div className="stat-label">reclaimed per workflow / month</div>
+            </div>
+            <div>
+              <div className="stat-num">3<span> mo</span></div>
+              <div className="stat-label">to build, test &amp; fully optimize</div>
+            </div>
+            <div>
+              <div className="stat-num">$0</div>
+              <div className="stat-label">dev team required</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="section section-alt" id="how">
+        <div className="container">
+          <span className="eyebrow">Process</span>
+          <div className="section-header">
+            <h2 className="section-title">From audit call to running on autopilot.</h2>
+            <p className="section-sub">Four stages. No dev team. No disruption to your existing tools.</p>
+          </div>
+          <div className="how-steps">
+            {[
+              { n: '01 · DISCOVER', t: 'Audit call', d: 'We map your current manual processes and identify the highest-impact automation opportunities for your firm.' },
+              { n: '02 · BUILD', t: 'Custom build', d: 'Each workflow is built specifically for your firm — your clients, your naming conventions, your existing tools. We build around the software you already use: TaxDome, Karbon, Canopy, Practice CS, and others.' },
+              { n: '03 · REFINE', t: '3-month optimization', d: 'Real usage surfaces edge cases. We iterate until every workflow runs cleanly without anyone babysitting it.' },
+              { n: '04 · SUSTAIN', t: 'Ongoing maintenance', d: 'After your 3-month engagement closes, a low monthly retainer keeps everything monitored, updated, and running without you thinking about it.' },
+            ].map(s => (
+              <div className="how-step" key={s.n}>
+                <div className="how-step-num">{s.n}</div>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WORKFLOWS */}
+      <section className="section" id="workflows">
+        <div className="container">
+          <span className="eyebrow">What gets automated</span>
+          <div className="section-header">
+            <h2 className="section-title">The work that runs your firm in the background.</h2>
+            <p className="section-sub">These are the workflows most CPA and accounting firms start with — highest time savings, least disruption.</p>
+          </div>
+
+          <div className="workflow-cat">Client Onboarding &amp; Intake</div>
+          <div className="workflow-grid">
+            {[
+              { t: 'New Client Onboarding Sequence', d: 'Triggered when a new engagement is signed. Sends welcome email, document checklist, portal access, and meeting link — automatically.', s: '↳ Saves ~3–4 hrs per new client' },
+              { t: 'Engagement Letter Generation', d: 'Auto-generates a pre-filled engagement letter from a form submission — client name, services, fees — ready for e-signature without manual drafting.', s: '↳ Saves ~1–2 hrs per client per year' },
+              { t: 'Document Collection & Follow-Up', d: "Automatically follows up with clients who haven't submitted required documents by a deadline. Escalates reminders without staff involvement.", s: '↳ Saves ~5–8 hrs/month during tax season' },
+            ].map(w => (
+              <div className="workflow-card" key={w.t}>
+                <h4>{w.t}</h4>
+                <p>{w.d}</p>
+                <div className="workflow-save">{w.s}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="workflow-cat">Deadline &amp; Calendar Management</div>
+          <div className="workflow-grid">
+            {[
+              { t: 'Tax Deadline Reminder System', d: 'Tracks filing deadlines per client, sends automated reminders at 30/14/7/1 day intervals. Your staff only sees exceptions, not the routine.', s: '↳ Saves ~4–6 hrs/month' },
+              { t: 'Extension Filing Tracker', d: 'When an extension is filed, automatically updates the client record, notifies the client, and resets deadline reminders to the extended date.', s: '↳ Saves ~2–3 hrs/month during extension season' },
+            ].map(w => (
+              <div className="workflow-card" key={w.t}>
+                <h4>{w.t}</h4>
+                <p>{w.d}</p>
+                <div className="workflow-save">{w.s}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="workflow-cat">Client Communication</div>
+          <div className="workflow-grid">
+            {[
+              { t: 'Return Completion Notification', d: 'When a return is marked complete, the client automatically receives a notification with review instructions and next steps — no staff touchpoint needed.', s: '↳ Saves ~2 hrs/month' },
+              { t: 'Referral Thank-You Sequence', d: 'When a new client indicates a referral source, the referring client automatically receives a personalized thank-you — strengthening your referral culture passively.', s: '↳ Drives referrals + zero staff effort' },
+              { t: 'Annual Review Re-engagement', d: "Automatically contacts clients in the off-season to schedule annual planning meetings — so you're proactive about recurring revenue, not reactive.", s: '↳ Drives retention + upsell revenue' },
+            ].map(w => (
+              <div className="workflow-card" key={w.t}>
+                <h4>{w.t}</h4>
+                <p>{w.d}</p>
+                <div className="workflow-save">{w.s}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="workflow-cat">Internal Operations</div>
+          <div className="workflow-grid">
+            {[
+              { t: 'Invoice & A/R Follow-Up', d: 'Automatically sends polite payment reminders for unpaid invoices at set intervals — persistent without staff having to make awkward calls.', s: '↳ Saves ~3–5 hrs/month + improves cash flow' },
+              { t: 'New Staff Onboarding Checklist', d: 'When a new hire is added, automatically triggers system access requests, training delivery, and 30/60/90 day check-ins.', s: '↳ Saves ~4–6 hrs per new hire' },
+            ].map(w => (
+              <div className="workflow-card" key={w.t}>
+                <h4>{w.t}</h4>
+                <p>{w.d}</p>
+                <div className="workflow-save">{w.s}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section className="section section-alt" id="pricing">
+        <div className="container">
+          <span className="eyebrow">Pricing</span>
+          <div className="section-header">
+            <h2 className="section-title">Outcome-based. Not hourly.</h2>
+            <p className="section-sub">You're not paying for hours. You're paying for working, optimized workflows — with a 3-month period to make sure they hold up in the real world.</p>
+          </div>
+          <div className="pricing-grid">
+            {[
+              {
+                tier: 'Starter', price: '$1,500', desc: <><strong>1 workflow</strong> — built &amp; fully optimized</>,
+                features: ['1 custom automation, fully built', '3-month optimization period', 'Unlimited iterations during engagement', 'Documentation & process guide'],
+                min: '$4,500 total', maint: '$300/mo', featured: false,
+              },
+              {
+                tier: 'Growth', price: '$2,500', desc: <><strong>2 workflows</strong> — built &amp; fully optimized</>,
+                features: ['2 custom automations, fully built', '3-month optimization period', 'Unlimited iterations during engagement', 'Documentation & process guide', 'Priority support response'],
+                min: '$7,500 total', maint: '$500/mo', featured: true,
+              },
+              {
+                tier: 'Full Practice', price: '$4,000', desc: <><strong>4 workflows</strong> — built &amp; fully optimized</>,
+                features: ['4 custom automations, fully built', '3-month optimization period', 'Unlimited iterations during engagement', 'Documentation & process guide', 'Priority support response', 'Quarterly workflow review call'],
+                min: '$12,000 total', maint: '$700/mo', featured: false,
+              },
+            ].map(p => (
+              <div key={p.tier} className={`pricing-card${p.featured ? ' featured' : ''}`}>
+                {p.featured && <div className="featured-pill">Most Popular</div>}
+                <div className="pricing-tier">{p.tier}</div>
+                <div className="pricing-price">{p.price}<sub>/mo</sub></div>
+                <div className="pricing-desc">{p.desc}</div>
+                <ul className="pricing-features">
+                  {p.features.map(f => <li key={f}>{f}</li>)}
+                </ul>
+                <div className="pricing-meta">
+                  <div className="pricing-meta-row"><span className="lbl">3-month minimum</span><span className="val">{p.min}</span></div>
+                  <div className="pricing-meta-row"><span className="lbl">Monthly retainer after</span><span className="val hi">{p.maint}</span></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="pricing-note">
+            <strong>Why a 3-month minimum?</strong> Building a workflow takes a week. Building one that runs reliably without supervision — across every edge case your firm throws at it — takes three months of real usage and iteration. The minimum protects you, not us. A workflow that breaks in month 4 isn&apos;t a finished workflow.
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="section" id="about">
+        <div className="container">
+          <div className="about-grid">
+            <div className="about-text">
+              <span className="eyebrow">About</span>
+              <h2>Built by someone who understands your world.</h2>
+              <p>Jacob Merkley has a Bachelor's in Accounting, an MBA, and 15 years of hybrid accounting, recruiting, and business operations experience. He has also participated in several startups and grew to love building AI automations to save time and money.</p>
+              <p>Cronere was started to get your time back — so you can focus on the parts of your business that truly matter.</p>
+              <p style={{marginTop: '1.5rem'}}>
+                <a href={LINKEDIN} target="_blank" rel="noreferrer" className="about-link">
+                  <LinkedInIcon /> Connect with Jacob on LinkedIn →
+                </a>
+              </p>
+            </div>
+            <div className="creds">
+              {[
+                { icon: '🎓', title: 'MBA — Accounting & Finance', desc: 'Deep fluency in how CPA firms operate, think, and bill.' },
+                { icon: '🏢', title: '7+ Years in Professional Services', desc: 'Recruiting and working alongside finance and accounting teams at hundreds of firms.' },
+                { icon: '⚙️', title: 'Full-Stack AI Builder', desc: 'Make.com, Supabase, Claude API, Next.js — the tools that actually get workflows into production.' },
+                { icon: '🔒', title: 'Simple ongoing retainer', desc: 'After your engagement closes, a flat monthly retainer keeps everything monitored, updated, and running. No surprises.' },
+              ].map(c => (
+                <div key={c.title} className="cred">
+                  <div className="cred-icon">{c.icon}</div>
+                  <div>
+                    <div className="cred-title">{c.title}</div>
+                    <div className="cred-desc">{c.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section section-alt" id="faq">
+        <div className="container">
+          <span className="eyebrow">FAQ</span>
+          <div className="section-header">
+            <h2 className="section-title">Common questions.</h2>
+          </div>
+          <div className="faq-grid">
+            {[
+              { q: 'Do I need to change the software my firm already uses?', a: "No. We build around the tools you're already paying for — TaxDome, Karbon, Canopy, Practice CS, and others. Nothing gets ripped out. In most cases we're making your existing software work the way you originally hoped it would." },
+              { q: 'What does the 3-month minimum actually mean?', a: "It means you get three full months of build, testing, and refinement — not just a handoff on day 30. Edge cases get caught and fixed before the engagement closes." },
+              { q: 'What happens if I want to stop after 3 months?', a: "After your engagement closes you move to a simple monthly retainer — $300, $500, or $700 depending on your tier. If you ever want to wind down, just give us 30 days notice. Everything built is documented so nothing disappears." },
+              { q: 'How long does it take to see results?', a: "Most firms see time savings from the first workflow within 2–3 weeks of it going live. Document collection and deadline reminders produce the fastest, most visible results." },
+              { q: "What's a \"workflow\" exactly?", a: "A workflow is a defined, automated process — for example: when a new engagement letter is signed, automatically send the client a welcome packet and document checklist. One trigger, one outcome, running without staff involvement." },
+              { q: 'Is this right for a solo practitioner or only larger firms?', a: "Both. Solo and small firms (2–15 staff) often benefit the most because the time savings hit harder when there are fewer people absorbing the manual load. The Starter tier is designed with that in mind." },
+            ].map(f => (
+              <div key={f.q} className="faq-item">
+                <h4>{f.q}</h4>
+                <p>{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="section" id="contact">
+        <div className="container">
+          <div className="contact-inner">
+            <span className="eyebrow">Get started</span>
+            <h2>Ready to get <em>hours back</em> every month?</h2>
+            <p>Book a free 30-minute discovery call. We&apos;ll map out the two or three workflows that would have the biggest immediate impact on your firm — no commitment required.</p>
+            <div className="contact-actions">
+              <a href={CALENDLY} target="_blank" rel="noreferrer" className="btn-large">
+                Book a discovery call →
+              </a>
+              <a href={LINKEDIN} target="_blank" rel="noreferrer" className="contact-li">
+                <LinkedInIcon /> Connect on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <a href="#hero" className="footer-logo">
+          <LogoMark size={22} />
+          <span className="footer-wordmark">cron<span>e</span>re</span>
+        </a>
+        <div className="footer-right">© 2026 Inboxx Digital, LLC dba Cronere · cronere.com</div>
+      </footer>
+    </>
+  )
+}
