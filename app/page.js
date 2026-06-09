@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 
 const CALENDLY = 'https://calendly.com/jacobmerkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
@@ -25,6 +26,8 @@ const LinkedInIcon = () => (
 )
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const closeMenu = () => setMenuOpen(false)
   return (
     <>
       <style>{`
@@ -71,7 +74,7 @@ export default function Home() {
         .section-white .workflow-card:hover { border-color: #cbd5e1; }
         .section-white .workflow-card h4 { color: #0b0f1a; }
         .section-white .workflow-card p { color: #374151; }
-        .section-white .workflow-save { color: #0d7a5f; }
+        .section-white .workflow-save { color: #2563EB; }
         .section-white .about-text h2 { color: #0b0f1a; }
         .section-white .about-text p { color: #374151; }
         .section-white .about-link { color: #b87d0e; }
@@ -290,6 +293,28 @@ export default function Home() {
         .contact-li { display: inline-flex; align-items: center; gap: 8px; color: var(--text-mid); font-size: 15px; transition: color 0.15s; }
         .contact-li:hover { color: var(--text); }
 
+        /* ── PRICING CTA ── */
+        .pricing-cta {
+          margin-top: 2rem;
+          background: var(--gold-dim);
+          border: 1px solid var(--gold-bdr);
+          border-radius: 10px;
+          padding: 1.75rem 2rem;
+        }
+        .pricing-cta-inner {
+          display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+        }
+        .pricing-cta-text h3 { font-size: 18px; font-weight: 700; margin-bottom: 0.3rem; }
+        .pricing-cta-text p { font-size: 14px; color: var(--text-mid); }
+        .btn-cta-mid {
+          display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
+          background: var(--gold); color: #0b0f1a;
+          font-weight: 700; font-size: 14px;
+          padding: 12px 22px; border-radius: 8px;
+          transition: opacity 0.15s, transform 0.15s; white-space: nowrap;
+        }
+        .btn-cta-mid:hover { opacity: 0.88; transform: translateY(-1px); }
+
         /* ── FOOTER ── */
         .footer {
           border-top: 1px solid var(--border);
@@ -311,6 +336,57 @@ export default function Home() {
           .section { padding: 4rem 1.25rem; }
           .hero { padding-top: 7.5rem; padding-left: 1.25rem; padding-right: 1.25rem; }
           .nav { padding: 0 1.25rem; }
+          .hamburger { display: flex; }
+          .pricing-cta-inner { flex-direction: column; text-align: center; }
+        }
+        @media (min-width: 721px) {
+          .hamburger { display: none; }
+          .mobile-drawer { display: none !important; }
+        }
+
+        /* ── HAMBURGER ── */
+        .hamburger {
+          flex-direction: column; justify-content: center; align-items: center;
+          gap: 5px; width: 40px; height: 40px;
+          background: none; border: none; cursor: pointer; padding: 4px;
+          border-radius: 6px; transition: background 0.15s;
+        }
+        .hamburger:hover { background: rgba(255,255,255,0.07); }
+        .hamburger span {
+          display: block; width: 22px; height: 2px;
+          background: var(--text); border-radius: 2px;
+          transition: transform 0.2s, opacity 0.2s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── MOBILE DRAWER ── */
+        .mobile-drawer {
+          position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+          background: rgba(11,15,26,0.97);
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--border);
+          padding: 1.5rem 1.25rem 2rem;
+          display: flex; flex-direction: column; gap: 0;
+          transform: translateY(-110%);
+          transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+        .mobile-drawer.open { transform: translateY(0); }
+        .mobile-drawer a {
+          font-size: 17px; color: var(--text-mid);
+          padding: 0.9rem 0;
+          border-bottom: 1px solid var(--border);
+          transition: color 0.15s;
+        }
+        .mobile-drawer a:hover { color: var(--text); }
+        .mobile-drawer a:last-child { border-bottom: none; }
+        .mobile-drawer .drawer-cta {
+          margin-top: 1.25rem;
+          background: var(--gold); color: #0b0f1a;
+          font-weight: 700; font-size: 15px;
+          padding: 13px 20px; border-radius: 8px;
+          text-align: center; border-bottom: none !important;
         }
       `}</style>
 
@@ -328,7 +404,24 @@ export default function Home() {
           <a href="#faq">FAQ</a>
           <a href={CALENDLY} target="_blank" rel="noreferrer" className="nav-cta">Book a call →</a>
         </div>
+        <button
+          className={`hamburger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <span /><span /><span />
+        </button>
       </nav>
+
+      {/* MOBILE DRAWER */}
+      <div className={`mobile-drawer${menuOpen ? ' open' : ''}`}>
+        <a href="#how" onClick={closeMenu}>How it works</a>
+        <a href="#workflows" onClick={closeMenu}>Workflows</a>
+        <a href="#pricing" onClick={closeMenu}>Pricing</a>
+        <a href="#about" onClick={closeMenu}>About</a>
+        <a href="#faq" onClick={closeMenu}>FAQ</a>
+        <a href={CALENDLY} target="_blank" rel="noreferrer" className="drawer-cta" onClick={closeMenu}>Book a free discovery call →</a>
+      </div>
 
       {/* HERO */}
       <section className="hero" id="hero">
@@ -506,6 +599,17 @@ export default function Home() {
           </div>
           <div className="pricing-note">
             <strong>Why a 3-month minimum?</strong> Building a workflow takes a week. Building one that runs reliably without supervision — across every edge case your firm throws at it — takes three months of real usage and iteration. The minimum protects you, not us. A workflow that breaks in month 4 isn&apos;t a finished workflow.
+          </div>
+          <div className="pricing-cta">
+            <div className="pricing-cta-inner">
+              <div className="pricing-cta-text">
+                <h3>Not sure which tier is right for your firm?</h3>
+                <p>Book a free 30-minute call — we'll map out exactly what we'd build and recommend the right starting point.</p>
+              </div>
+              <a href={CALENDLY} target="_blank" rel="noreferrer" className="btn-cta-mid">
+                Book a discovery call →
+              </a>
+            </div>
           </div>
         </div>
       </section>
