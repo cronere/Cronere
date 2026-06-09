@@ -338,6 +338,29 @@ export default function Home() {
         .contact-li { display: inline-flex; align-items: center; gap: 8px; color: var(--text-mid); font-size: 15px; transition: color 0.15s; }
         .contact-li:hover { color: var(--text); }
 
+        /* ── DEMO BANNER ── */
+        .demo-banner {
+          margin-top: 3rem;
+          background: var(--bg-2);
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 1.75rem 2rem;
+          display: flex; align-items: center;
+          justify-content: space-between; gap: 1.5rem;
+          flex-wrap: wrap;
+        }
+        .demo-banner-text h3 { font-size: 17px; font-weight: 700; margin-bottom: 0.3rem; }
+        .demo-banner-text p { font-size: 14px; color: var(--text-mid); }
+        .btn-demo {
+          display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
+          background: transparent; color: var(--gold);
+          border: 1.5px solid var(--gold-bdr);
+          font-weight: 600; font-size: 14px;
+          padding: 11px 22px; border-radius: 8px;
+          transition: background 0.15s; white-space: nowrap;
+        }
+        .btn-demo:hover { background: var(--gold-dim); }
+
         /* ── PRICING CTA ── */
         .pricing-cta {
           margin-top: 2rem;
@@ -444,6 +467,7 @@ export default function Home() {
         <div className="nav-links">
           <a href="#how">How it works</a>
           <a href="#workflows">Workflows</a>
+          <a href="/demo">See demos</a>
           <a href="#pricing">Pricing</a>
           <a href="#about">About</a>
           <a href="#faq">FAQ</a>
@@ -462,6 +486,7 @@ export default function Home() {
       <div className={`mobile-drawer${menuOpen ? ' open' : ''}`}>
         <a href="#how" onClick={closeMenu}>How it works</a>
         <a href="#workflows" onClick={closeMenu}>Workflows</a>
+        <a href="/demo" onClick={closeMenu}>See demos</a>
         <a href="#pricing" onClick={closeMenu}>Pricing</a>
         <a href="#about" onClick={closeMenu}>About</a>
         <a href="#faq" onClick={closeMenu}>FAQ</a>
@@ -597,6 +622,13 @@ export default function Home() {
                 <div className="workflow-save">{w.s}</div>
               </div>
             ))}
+          </div>
+          <div className="demo-banner">
+            <div className="demo-banner-text">
+              <h3>Want to see these workflows running live?</h3>
+              <p>Three short video demos — real Make.com automations built for CPA firms, running with live dummy data.</p>
+            </div>
+            <a href="/demo" className="btn-demo">Watch the demos →</a>
           </div>
         </div>
       </section>
