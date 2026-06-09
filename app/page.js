@@ -694,6 +694,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WHY CRONERE */}
+      <section className="section why-cronere">
+        <div className="container">
+          <div className="why-inner">
+            <div className="why-text">
+              <span className="eyebrow">Why Cronere?</span>
+              <h2>Named after the technology that runs things <em>automatically.</em></h2>
+              <p>In software development, a <strong style={{color: 'var(--text)'}}>cron job</strong> is a task scheduled to run silently in the background — no manual trigger, no human involvement, just reliable execution on a defined schedule. It&apos;s the backbone of how modern software keeps things running without anyone thinking about it.</p>
+              <p>That&apos;s exactly what Cronere does for your firm. The manual work doesn&apos;t disappear — it just stops requiring your attention. Engagement letters, document reminders, client follow-ups, deadline tracking. Running quietly. Correctly. Every time.</p>
+              <p>The name is a reminder of what the goal actually is: not automation for its own sake, but work that runs itself so you don&apos;t have to.</p>
+            </div>
+            <div className="why-code">
+              <span className="why-code-label">A cron job — the inspiration</span>
+              <pre>
+                <span dangerouslySetInnerHTML={{__html:
+`<span class="cm"># Every weekday at 8am:</span>
+<span class="kw">0 8</span> * * <span class="val">1-5</span> send_reminders
+
+<span class="cm"># On the 1st of each month:</span>
+<span class="kw">0 9</span> <span class="val">1</span> * * generate_invoices
+
+<span class="cm"># 30 days before deadline:</span>
+<span class="kw">0 10</span> * * * check_deadlines`
+                }} />
+              </pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section section-alt" id="faq">
         <div className="container">
