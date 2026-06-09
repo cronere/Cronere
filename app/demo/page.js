@@ -111,12 +111,12 @@ export default function Demo() {
         .nav-wordmark { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
         .nav-wordmark span { color: var(--blue); }
         .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .nav-back { font-size: 13px; color: var(--text-mid); transition: color 0.15s; }
+        .nav-back { font-size: 14px; color: var(--text-mid); transition: color 0.15s; }
         .nav-back:hover { color: var(--text); }
         .nav-book {
           background: var(--gold); color: #0b0f1a;
-          font-size: 13px; font-weight: 600;
-          padding: 8px 16px; border-radius: 6px;
+          font-size: 14px; font-weight: 600;
+          padding: 9px 18px; border-radius: 6px;
           transition: opacity 0.15s;
         }
         .nav-book:hover { opacity: 0.88; }
@@ -143,7 +143,7 @@ export default function Demo() {
           margin-bottom: 1.5rem;
         }
         .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-        .hero-eyebrow span { font-size: 12px; color: var(--gold); font-weight: 500; }
+        .hero-eyebrow span { font-size: 14px; color: var(--gold); font-weight: 500; }
         .hero h1 {
           font-size: clamp(28px, 4vw, 44px);
           font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
@@ -161,7 +161,7 @@ export default function Demo() {
         }
         .stat-num { font-size: 28px; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 3px; }
         .stat-num span { color: var(--gold); }
-        .stat-label { font-size: 13px; color: var(--text-mid); }
+        .stat-label { font-size: 15px; color: var(--text-mid); }
 
         /* VIDEOS */
         .videos { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem; }
@@ -178,23 +178,23 @@ export default function Demo() {
           gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;
         }
         .video-num {
-          font-family: var(--mono); font-size: 11px;
+          font-family: var(--mono); font-size: 12px;
           color: var(--gold); letter-spacing: 0.1em;
           margin-bottom: 0.4rem; display: block;
         }
         .video-title {
-          font-size: clamp(20px, 2.5vw, 26px);
+          font-size: clamp(22px, 2.5vw, 28px);
           font-weight: 700; letter-spacing: -0.02em;
           margin-bottom: 0.5rem;
         }
         .video-duration {
-          font-size: 12px; color: var(--text-dim);
+          font-size: 14px; color: var(--text-dim);
           font-family: var(--mono);
         }
         .video-stat {
           background: var(--green); color: #0b0f1a;
-          font-size: 12px; font-weight: 600;
-          padding: 6px 14px; border-radius: 100px;
+          font-size: 13px; font-weight: 600;
+          padding: 7px 16px; border-radius: 100px;
           white-space: nowrap; flex-shrink: 0;
           align-self: flex-start; margin-top: 4px;
         }
@@ -206,21 +206,21 @@ export default function Demo() {
           border-radius: 8px; overflow: hidden;
           margin-bottom: 1.5rem;
         }
-        .summary-cell { background: var(--bg-card); padding: 1rem 1.25rem; }
+        .summary-cell { background: var(--bg-card); padding: 1.25rem 1.5rem; }
         .summary-label {
-          font-family: var(--mono); font-size: 9px;
+          font-family: var(--mono); font-size: 11px;
           letter-spacing: 0.15em; text-transform: uppercase;
-          color: var(--text-dim); margin-bottom: 0.4rem; display: block;
+          color: var(--text-dim); margin-bottom: 0.6rem; display: block;
         }
-        .summary-cell p { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+        .summary-cell p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
         .summary-cell.outcome p { color: var(--text); }
 
         .video-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .tag {
-          font-size: 11px; color: var(--blue);
+          font-size: 13px; color: var(--blue);
           background: var(--blue-dim);
           border: 1px solid rgba(79,142,247,0.2);
-          border-radius: 4px; padding: 3px 9px;
+          border-radius: 4px; padding: 4px 12px;
         }
 
         /* LOOM EMBED */
@@ -248,9 +248,9 @@ export default function Demo() {
           color: var(--gold);
         }
         .loom-placeholder p {
-          font-size: 13px; color: var(--text-dim); text-align: center;
+          font-size: 15px; color: var(--text-dim); text-align: center;
         }
-        .loom-placeholder strong { color: var(--text-mid); display: block; margin-bottom: 4px; }
+        .loom-placeholder strong { color: var(--text-mid); display: block; margin-bottom: 4px; font-size: 16px; }
 
         /* CTA SECTION */
         .cta-section {
@@ -326,7 +326,7 @@ export default function Demo() {
             <span>Live workflow demos — CPA &amp; Accounting Firms</span>
           </div>
           <h1>See it working.<br />Three workflows, <em>six minutes.</em></h1>
-          <p>These aren&apos;t mockups. Each video shows a live Make.com automation built specifically for CPA and accounting firms — running with real dummy data.</p>
+          <p>Three live Make.com automations built specifically for CPA and accounting firms. Watch them run — then book a call to see what we&apos;d build for yours.</p>
           <div className="hero-stats">
             <div>
               <div className="stat-num">3</div>
