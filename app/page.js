@@ -60,25 +60,30 @@ export default function Home() {
         .section-white {
           background: #ffffff;
         }
-        .section-white .eyebrow { color: var(--gold); }
+        .section-white .eyebrow { color: #b87d0e; }
         .section-white .section-title { color: #0b0f1a; }
-        .section-white .section-sub { color: #4a5568; }
-        .section-white .workflow-cat { color: #94a3b8; }
+        .section-white .section-sub { color: #374151; font-size: 18px; }
+        .section-white .workflow-cat { color: #6b7280; font-size: 11px; }
         .section-white .workflow-card {
           background: #f8fafc;
           border-color: #e2e8f0;
         }
         .section-white .workflow-card:hover { border-color: #cbd5e1; }
         .section-white .workflow-card h4 { color: #0b0f1a; }
-        .section-white .workflow-card p { color: #4a5568; }
+        .section-white .workflow-card p { color: #374151; }
+        .section-white .workflow-save { color: #0d7a5f; }
         .section-white .about-text h2 { color: #0b0f1a; }
-        .section-white .about-text p { color: #4a5568; }
+        .section-white .about-text p { color: #374151; }
+        .section-white .about-link { color: #b87d0e; }
         .section-white .cred {
-          background: #f8fafc;
-          border-color: #e2e8f0;
+          background: #ffffff;
+          border: 1.5px solid #d1d5db;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
-        .section-white .cred-title { color: #0b0f1a; }
-        .section-white .cred-desc { color: #4a5568; }
+        .section-white .cred:hover { border-color: #9ca3af; box-shadow: 0 2px 8px rgba(0,0,0,0.09); }
+        .section-white .cred-icon { filter: grayscale(0.3); }
+        .section-white .cred-title { color: #111827; font-size: 15px; }
+        .section-white .cred-desc { color: #4b5563; font-size: 14px; }
         .container { max-width: 980px; margin: 0 auto; }
         .eyebrow {
           display: block;
@@ -251,7 +256,14 @@ export default function Home() {
           background: var(--bg-card); border: 1px solid var(--border);
           border-radius: 9px; padding: 1.1rem 1.25rem;
         }
-        .cred-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+        .cred-icon {
+          font-size: 18px; flex-shrink: 0; margin-top: 1px;
+          width: 36px; height: 36px;
+          display: flex; align-items: center; justify-content: center;
+          background: #f1f5f9;
+          border-radius: 8px;
+          border: 1px solid #e2e8f0;
+        }
         .cred-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
         .cred-desc { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
 
@@ -456,8 +468,8 @@ export default function Home() {
         <div className="container">
           <span className="eyebrow">Pricing</span>
           <div className="section-header">
-            <h2 className="section-title">Outcome-based. Not hourly.</h2>
-            <p className="section-sub">You're not paying for hours. You're paying for working, optimized workflows — with a 3-month period to make sure they hold up in the real world.</p>
+            <h2 className="section-title">Outcome-based pricing.<br />Built around what your firm actually needs.</h2>
+            <p className="section-sub">Three tiers. A defined build and optimization period. A simple monthly retainer after. No surprises.</p>
           </div>
           <div className="pricing-grid">
             {[
@@ -515,10 +527,10 @@ export default function Home() {
             </div>
             <div className="creds">
               {[
-                { icon: '🎓', title: 'MBA — Accounting & Finance', desc: 'Deep fluency in how CPA firms operate, think, and bill.' },
-                { icon: '🏢', title: '7+ Years in Professional Services', desc: 'Recruiting and working alongside finance and accounting teams at hundreds of firms.' },
+                { icon: '🎓', title: 'MBA + Bachelor\'s in Accounting', desc: 'Deep fluency in how CPA firms operate, think, and bill — not just how to automate them.' },
+                { icon: '🏢', title: '15 Years in Accounting & Operations', desc: 'Recruiting and working alongside finance and accounting teams at hundreds of firms.' },
                 { icon: '⚙️', title: 'Full-Stack AI Builder', desc: 'Make.com, Supabase, Claude API, Next.js — the tools that actually get workflows into production.' },
-                { icon: '🔒', title: 'Simple ongoing retainer', desc: 'After your engagement closes, a flat monthly retainer keeps everything monitored, updated, and running. No surprises.' },
+                { icon: '📋', title: 'Simple Ongoing Retainer', desc: 'After your engagement closes, a flat monthly retainer keeps everything monitored, updated, and running. No surprises.' },
               ].map(c => (
                 <div key={c.title} className="cred">
                   <div className="cred-icon">{c.icon}</div>
