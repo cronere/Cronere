@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const CALENDLY = 'https://calendly.com/jacobmerkley'
+const CALENDLY = 'https://calendly.com/jacob-merkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
 
 const LogoMark = ({ size = 32 }) => (
