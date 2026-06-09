@@ -38,7 +38,7 @@ export default function Home() {
           border-bottom: 1px solid var(--border);
         }
         .nav-logo { display: flex; align-items: center; gap: 10px; }
-        .nav-wordmark { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; color: var(--text); }
+        .nav-wordmark { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); }
         .nav-wordmark span { color: var(--blue); }
         .nav-links { display: flex; align-items: center; gap: 2rem; }
         .nav-links a { font-size: 15px; color: var(--text-mid); transition: color 0.15s; }
@@ -57,6 +57,28 @@ export default function Home() {
         /* ── LAYOUT ── */
         .section { padding: 6rem 2rem; }
         .section-alt { background: var(--bg-2); }
+        .section-white {
+          background: #ffffff;
+        }
+        .section-white .eyebrow { color: var(--gold); }
+        .section-white .section-title { color: #0b0f1a; }
+        .section-white .section-sub { color: #4a5568; }
+        .section-white .workflow-cat { color: #94a3b8; }
+        .section-white .workflow-card {
+          background: #f8fafc;
+          border-color: #e2e8f0;
+        }
+        .section-white .workflow-card:hover { border-color: #cbd5e1; }
+        .section-white .workflow-card h4 { color: #0b0f1a; }
+        .section-white .workflow-card p { color: #4a5568; }
+        .section-white .about-text h2 { color: #0b0f1a; }
+        .section-white .about-text p { color: #4a5568; }
+        .section-white .cred {
+          background: #f8fafc;
+          border-color: #e2e8f0;
+        }
+        .section-white .cred-title { color: #0b0f1a; }
+        .section-white .cred-desc { color: #4a5568; }
         .container { max-width: 980px; margin: 0 auto; }
         .eyebrow {
           display: block;
@@ -103,7 +125,7 @@ export default function Home() {
           top: -80px; left: 50%; transform: translateX(-50%);
           pointer-events: none;
         }
-        .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+        .hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; text-align: center; }
         .hero-badge {
           display: inline-flex; align-items: center; gap: 8px;
           background: var(--gold-dim);
@@ -127,9 +149,9 @@ export default function Home() {
           color: var(--text-mid);
           max-width: 560px;
           line-height: 1.7;
-          margin-bottom: 2.5rem;
+          margin: 0 auto 2.5rem;
         }
-        .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+        .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
         .btn-primary {
           display: inline-flex; align-items: center; gap: 8px;
           background: var(--gold); color: #0b0f1a;
@@ -145,7 +167,7 @@ export default function Home() {
         }
         .btn-ghost:hover { color: var(--text); }
         .hero-stats {
-          display: flex; gap: 3rem; flex-wrap: wrap;
+          display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;
           padding-top: 2.5rem;
           border-top: 1px solid var(--border);
         }
@@ -178,9 +200,9 @@ export default function Home() {
           transition: border-color 0.2s;
         }
         .workflow-card:hover { border-color: var(--border-h); }
-        .workflow-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
-        .workflow-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
-        .workflow-save { font-family: var(--mono); font-size: 12px; color: var(--green); margin-top: 0.75rem; }
+        .workflow-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 0.5rem; }
+        .workflow-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+        .workflow-save { font-family: var(--mono); font-size: 13px; color: var(--green); margin-top: 0.75rem; }
 
         /* ── PRICING ── */
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
@@ -260,6 +282,7 @@ export default function Home() {
         .footer {
           border-top: 1px solid var(--border);
           padding: 1.75rem 2rem;
+          background: var(--bg);
           display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
         }
         .footer-logo { display: flex; align-items: center; gap: 9px; }
@@ -360,7 +383,7 @@ export default function Home() {
       </section>
 
       {/* WORKFLOWS */}
-      <section className="section" id="workflows">
+      <section className="section section-white" id="workflows">
         <div className="container">
           <span className="eyebrow">What gets automated</span>
           <div className="section-header">
@@ -476,7 +499,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="section" id="about">
+      <section className="section section-white" id="about">
         <div className="container">
           <div className="about-grid">
             <div className="about-text">
