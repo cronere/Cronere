@@ -1,0 +1,20 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F8EF7"/>
+      <stop offset="100%" style="stop-color:#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect x="0" y="0" width="200" height="200" rx="44" fill="url(#iconGrad)"/>
+
+  <!-- Cron bracket left -->
+  <path d="M52 64 L34 100 L52 136" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.55"/>
+
+  <!-- Cron bracket right -->
+  <path d="M148 64 L166 100 L148 136" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.55"/>
+
+  <!-- Pulse / heartbeat line -->
+  <path d="M68 100 L84 100 L93 75 L107 125 L116 100 L132 100" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
