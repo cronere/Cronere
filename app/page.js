@@ -212,33 +212,37 @@ export default function Home() {
         .workflow-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
         .workflow-save { font-family: var(--mono); font-size: 13px; color: var(--green); margin-top: 0.75rem; }
 
-        /* ── PRICING ── */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-        .pricing-card {
+        /* ── PRICING TABLES ── */
+        .pricing-tables { display: flex; flex-direction: column; gap: 0; }
+        .price-table-wrap {
           background: var(--bg-card); border: 1px solid var(--border);
-          border-radius: 10px; padding: 2.25rem; position: relative;
+          border-radius: 10px; overflow: hidden;
         }
-        .pricing-card.featured { border-color: var(--gold-bdr); background: linear-gradient(160deg, #17213a 0%, #131b2e 100%); }
-        .featured-pill {
-          position: absolute; top: -1px; right: 22px;
-          background: var(--gold); color: #0b0f1a;
-          font-family: var(--mono); font-size: 10px; font-weight: 600;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          padding: 4px 12px; border-radius: 0 0 7px 7px;
+        .price-table-header {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+          flex-wrap: wrap; gap: 0.5rem;
         }
-        .pricing-tier { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.75rem; }
-        .pricing-price { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.2rem; }
-        .pricing-price sub { font-size: 16px; font-weight: 400; color: var(--text-mid); vertical-align: baseline; }
-        .pricing-desc { font-size: 15px; color: var(--text-mid); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .pricing-desc strong { color: var(--gold); }
-        .pricing-features { list-style: none; margin-bottom: 2rem; }
-        .pricing-features li { font-size: 14px; color: var(--text-mid); padding: 0.35rem 0; display: flex; gap: 10px; }
-        .pricing-features li::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: 12px; margin-top: 3px; }
-        .pricing-meta { border-top: 1px solid var(--border); padding-top: 1.25rem; }
-        .pricing-meta-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 0.5rem; }
-        .pricing-meta-row .lbl { color: var(--text-dim); }
-        .pricing-meta-row .val { font-family: var(--mono); color: var(--text-mid); }
-        .pricing-meta-row .val.hi { color: var(--green); }
+        .price-table-eye {
+          font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+          text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+        }
+        .price-table-title { font-size: 16px; font-weight: 600; color: var(--text); }
+        .price-table-note { font-size: 13px; color: var(--text-dim); font-family: var(--mono); }
+        .price-table { width: 100%; border-collapse: collapse; }
+        .price-table th {
+          text-align: left; padding: 10px 16px;
+          font-size: 11px; color: var(--text-dim); font-weight: 400;
+          letter-spacing: 0.08em; text-transform: uppercase;
+          background: var(--bg-2); border-bottom: 1px solid var(--border);
+        }
+        .price-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 15px; }
+        .price-table tr:last-child td { border-bottom: none; }
+        .price-table tr.row-highlight { background: var(--gold-dim); }
+        .td-main { color: var(--text); font-weight: 500; }
+        .td-price { color: var(--text); font-weight: 700; font-size: 16px; }
+        .td-mid { color: var(--text-mid); }
+        .td-save { color: var(--green); font-size: 13px; font-family: var(--mono); }
         .pricing-note {
           background: var(--bg-card); border: 1px solid var(--border);
           border-radius: 10px; padding: 1.5rem 1.75rem;
@@ -406,6 +410,8 @@ export default function Home() {
           .nav { padding: 0 1.25rem; }
           .hamburger { display: flex; }
           .pricing-cta-inner { flex-direction: column; text-align: center; }
+          .price-table th:nth-child(3), .price-table td:nth-child(3) { display: none; }
+          .price-table-header { flex-direction: column; align-items: flex-start; }
         }
         @media (min-width: 721px) {
           .hamburger { display: none; }
@@ -639,58 +645,98 @@ export default function Home() {
           <span className="eyebrow">Pricing</span>
           <div className="section-header">
             <h2 className="section-title">Simple, transparent pricing.<br />The more you build, the better the value.</h2>
-            <p className="section-sub">Per-workflow pricing that rewards commitment. 50% upfront to begin, 50% plus first month maintenance at delivery. No long-term contracts.</p>
+            <p className="section-sub">Per-workflow pricing with no long-term contracts. 50% upfront to begin, 50% plus first month maintenance at delivery.</p>
           </div>
-          <div className="pricing-grid">
-            {[
-              {
-                tier: 'Starter',
-                price: '$2,500',
-                desc: <>Your <strong>1st workflow</strong> — fully built &amp; delivered</>,
-                features: ['Custom automation built for your firm', 'Connected to your existing tools', 'Tested with real data before delivery', 'Documentation included', '50% upfront · 50% at delivery'],
-                maint: '$250/mo',
-                featured: false,
-              },
-              {
-                tier: 'Growth',
-                price: '$4,500',
-                desc: <>Your <strong>1st + 2nd workflow</strong> — fully built &amp; delivered</>,
-                features: ['2 custom automations built for your firm', 'Connected to your existing tools', 'Tested with real data before delivery', 'Documentation included', '50% upfront · 50% at delivery'],
-                maint: '$450/mo',
-                featured: true,
-              },
-              {
-                tier: 'Full Practice',
-                price: '$7,000',
-                desc: <>Your <strong>1st through 4th workflow</strong> — fully built &amp; delivered</>,
-                features: ['4 custom automations built for your firm', 'Connected to your existing tools', 'Tested with real data before delivery', 'Documentation included', '50% upfront · 50% at delivery'],
-                maint: '$775/mo',
-                featured: false,
-              },
-            ].map(p => (
-              <div key={p.tier} className={`pricing-card${p.featured ? ' featured' : ''}`}>
-                {p.featured && <div className="featured-pill">Most Popular</div>}
-                <div className="pricing-tier">{p.tier}</div>
-                <div className="pricing-price">{p.price}<sub> build fee</sub></div>
-                <div className="pricing-desc">{p.desc}</div>
-                <ul className="pricing-features">
-                  {p.features.map(f => <li key={f}>{f}</li>)}
-                </ul>
-                <div className="pricing-meta">
-                  <div className="pricing-meta-row"><span className="lbl">Monthly maintenance</span><span className="val hi">{p.maint}</span></div>
-                  <div className="pricing-meta-row"><span className="lbl">Additional workflows</span><span className="val">from $1,000 each</span></div>
+
+          <div className="pricing-tables">
+
+            {/* BUILD FEE SCHEDULE */}
+            <div className="price-table-wrap">
+              <div className="price-table-header">
+                <div>
+                  <div className="price-table-eye">Build Fee Schedule</div>
+                  <div className="price-table-title">One-time fee per workflow</div>
                 </div>
+                <div className="price-table-note">50% upfront · 50% at delivery</div>
               </div>
-            ))}
+              <table className="price-table">
+                <thead>
+                  <tr>
+                    <th>Workflow</th>
+                    <th>Build fee</th>
+                    <th>Cumulative total</th>
+                    <th>Savings vs first</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { wf: '1st workflow', fee: '$2,500', total: '$2,500', save: '—', highlight: false },
+                    { wf: '2nd workflow', fee: '$2,000', total: '$4,500', save: 'Save $500', highlight: false },
+                    { wf: '3rd workflow', fee: '$1,500', total: '$6,000', save: 'Save $1,000', highlight: false },
+                    { wf: '4th workflow', fee: '$1,000', total: '$7,000', save: 'Save $1,500', highlight: true },
+                    { wf: '5th+ workflow', fee: '$1,000 each', total: '—', save: 'Save $1,500 each', highlight: true },
+                  ].map(r => (
+                    <tr key={r.wf} className={r.highlight ? 'row-highlight' : ''}>
+                      <td className="td-main">{r.wf}</td>
+                      <td className="td-price">{r.fee}</td>
+                      <td className="td-mid">{r.total}</td>
+                      <td className="td-save">{r.save}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* MAINTENANCE FEE SCHEDULE */}
+            <div className="price-table-wrap" style={{marginTop: '1.5rem'}}>
+              <div className="price-table-header">
+                <div>
+                  <div className="price-table-eye">Maintenance Fee Schedule</div>
+                  <div className="price-table-title">Monthly, charged in advance at delivery</div>
+                </div>
+                <div className="price-table-note">Cancel anytime · 30 days notice</div>
+              </div>
+              <table className="price-table">
+                <thead>
+                  <tr>
+                    <th>Workflows maintained</th>
+                    <th>Monthly fee</th>
+                    <th>Added this workflow</th>
+                    <th>Avg per workflow</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { wf: '1 workflow', monthly: '$250/mo', added: '+$250', avg: '$250', highlight: false },
+                    { wf: '2 workflows', monthly: '$450/mo', added: '+$200', avg: '$225', highlight: false },
+                    { wf: '3 workflows', monthly: '$625/mo', added: '+$175', avg: '$208', highlight: false },
+                    { wf: '4 workflows', monthly: '$775/mo', added: '+$150', avg: '$194', highlight: true },
+                    { wf: '5 workflows', monthly: '$925/mo', added: '+$150', avg: '$185', highlight: true },
+                    { wf: '6 workflows', monthly: '$1,075/mo', added: '+$150', avg: '$179', highlight: true },
+                    { wf: '8 workflows', monthly: '$1,375/mo', added: '+$150 each', avg: '$172', highlight: true },
+                  ].map(r => (
+                    <tr key={r.wf} className={r.highlight ? 'row-highlight' : ''}>
+                      <td className="td-main">{r.wf}</td>
+                      <td className="td-price">{r.monthly}</td>
+                      <td className="td-mid">{r.added}</td>
+                      <td className="td-save">{r.avg}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
           </div>
-          <div className="pricing-note">
-            <strong>How workflow pricing works:</strong> Your 1st workflow is $2,500. Your 2nd is $2,000. Your 3rd is $1,500. Every workflow after that is $1,000 each. The more you build, the better the per-workflow value — because by workflow 4 we already know your firm, your tools, and your processes inside out. Maintenance is $250/month for your 1st workflow, adding $200, $175, and $150 for each subsequent workflow. Cancel anytime with 30 days notice.
+
+          <div className="pricing-note" style={{marginTop: '1.5rem'}}>
+            <strong>What maintenance covers:</strong> Monitoring all scenarios for errors, updates when connected apps change their APIs, minor tweaks when your firm&apos;s processes evolve, and priority support when something needs attention. Your workflows keep running cleanly without you thinking about them.
           </div>
+
           <div className="pricing-cta">
             <div className="pricing-cta-inner">
               <div className="pricing-cta-text">
-                <h3>Not sure which tier is right for your firm?</h3>
-                <p>Book a free 30-minute call — we'll map out exactly what we'd build and recommend the right starting point.</p>
+                <h3>Not sure which workflow to start with?</h3>
+                <p>Book a free 30-minute call — we&apos;ll identify the two or three automations that would have the biggest immediate impact on your firm.</p>
               </div>
               <a href={CALENDLY} target="_blank" rel="noreferrer" className="btn-cta-mid">
                 Book a discovery call →
