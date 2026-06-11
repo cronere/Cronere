@@ -673,8 +673,7 @@ export default function Home() {
                     { wf: '1st workflow', fee: '$2,500', total: '$2,500', save: '—', highlight: false },
                     { wf: '2nd workflow', fee: '$2,000', total: '$4,500', save: 'Save $500', highlight: false },
                     { wf: '3rd workflow', fee: '$1,500', total: '$6,000', save: 'Save $1,000', highlight: false },
-                    { wf: '4th workflow', fee: '$1,000', total: '$7,000', save: 'Save $1,500', highlight: true },
-                    { wf: '5th+ workflow', fee: '$1,000 each', total: '—', save: 'Save $1,500 each', highlight: true },
+                    { wf: '4th+ workflow', fee: '$1,000 each', total: '—', save: 'Save $1,500 each', highlight: true },
                   ].map(r => (
                     <tr key={r.wf} className={r.highlight ? 'row-highlight' : ''}>
                       <td className="td-main">{r.wf}</td>
@@ -710,10 +709,7 @@ export default function Home() {
                     { wf: '1 workflow', monthly: '$250/mo', added: '+$250', avg: '$250', highlight: false },
                     { wf: '2 workflows', monthly: '$450/mo', added: '+$200', avg: '$225', highlight: false },
                     { wf: '3 workflows', monthly: '$625/mo', added: '+$175', avg: '$208', highlight: false },
-                    { wf: '4 workflows', monthly: '$775/mo', added: '+$150', avg: '$194', highlight: true },
-                    { wf: '5 workflows', monthly: '$925/mo', added: '+$150', avg: '$185', highlight: true },
-                    { wf: '6 workflows', monthly: '$1,075/mo', added: '+$150', avg: '$179', highlight: true },
-                    { wf: '8 workflows', monthly: '$1,375/mo', added: '+$150 each', avg: '$172', highlight: true },
+                    { wf: '4th+ workflow', monthly: '+$150 each', added: '+$150 each', avg: 'from $194', highlight: true },
                   ].map(r => (
                     <tr key={r.wf} className={r.highlight ? 'row-highlight' : ''}>
                       <td className="td-main">{r.wf}</td>
