@@ -709,7 +709,7 @@ export default function Home() {
                     { wf: '1 workflow', monthly: '$250/mo', added: '+$250', avg: '$250', highlight: false },
                     { wf: '2 workflows', monthly: '$450/mo', added: '+$200', avg: '$225', highlight: false },
                     { wf: '3 workflows', monthly: '$625/mo', added: '+$175', avg: '$208', highlight: false },
-                    { wf: '4th+ workflow', monthly: '+$150 each', added: '+$150 each', avg: 'from $194', highlight: true },
+                    { wf: '4th+ workflow', monthly: '$775/mo +$150 each', added: '+$150 each', avg: 'from $194', highlight: true },
                   ].map(r => (
                     <tr key={r.wf} className={r.highlight ? 'row-highlight' : ''}>
                       <td className="td-main">{r.wf}</td>
@@ -725,7 +725,7 @@ export default function Home() {
           </div>
 
           <div className="pricing-note" style={{marginTop: '1.5rem'}}>
-            <strong>What maintenance covers:</strong> Monitoring all scenarios for errors, updates when connected apps change their APIs, minor tweaks when your firm&apos;s processes evolve, and priority support when something needs attention. Your workflows keep running cleanly without you thinking about them.
+            <strong>What maintenance covers:</strong> Monitoring all workflows for errors, adjusting workflows for best practices amid an ever-changing AI landscape, minor tweaks when your firm&apos;s processes evolve, and priority support when something needs attention. Your workflows keep running cleanly without you thinking about them.
           </div>
 
           <div className="pricing-cta">
