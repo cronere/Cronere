@@ -224,25 +224,25 @@ export default function Home() {
           flex-wrap: wrap; gap: 0.5rem;
         }
         .price-table-eye {
-          font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-          text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+          font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+          text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
         }
-        .price-table-title { font-size: 16px; font-weight: 600; color: var(--text); }
-        .price-table-note { font-size: 13px; color: var(--text-dim); font-family: var(--mono); }
+        .price-table-title { font-size: 17px; font-weight: 600; color: var(--text); }
+        .price-table-note { font-size: 14px; color: var(--text-mid); font-family: var(--mono); }
         .price-table { width: 100%; border-collapse: collapse; }
         .price-table th {
           text-align: left; padding: 10px 16px;
-          font-size: 11px; color: var(--text-dim); font-weight: 400;
+          font-size: 12px; color: var(--text-mid); font-weight: 500;
           letter-spacing: 0.08em; text-transform: uppercase;
           background: var(--bg-2); border-bottom: 1px solid var(--border);
         }
-        .price-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 15px; }
+        .price-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 16px; }
         .price-table tr:last-child td { border-bottom: none; }
         .price-table tr.row-highlight { background: var(--gold-dim); }
         .td-main { color: var(--text); font-weight: 500; }
-        .td-price { color: var(--text); font-weight: 700; font-size: 16px; }
-        .td-mid { color: var(--text-mid); }
-        .td-save { color: var(--green); font-size: 13px; font-family: var(--mono); }
+        .td-price { color: var(--text); font-weight: 700; font-size: 17px; }
+        .td-mid { color: var(--text-mid); font-size: 16px; }
+        .td-save { color: var(--green); font-size: 14px; font-family: var(--mono); }
         .pricing-note {
           background: var(--bg-card); border: 1px solid var(--border);
           border-radius: 10px; padding: 1.5rem 1.75rem;
