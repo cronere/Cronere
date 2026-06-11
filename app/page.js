@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const CALENDLY = 'https://calendly.com/jacob-merkley'
+const CALENDLY = 'https://calendly.com/jacobmerkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
 
 const LogoMark = ({ size = 32 }) => (
@@ -544,8 +544,8 @@ export default function Home() {
             {[
               { n: '01 · DISCOVER', t: 'Audit call', d: 'We map your current manual processes and identify the highest-impact automation opportunities for your firm.' },
               { n: '02 · BUILD', t: 'Custom build', d: 'Each workflow is built specifically for your firm — your clients, your naming conventions, your existing tools. We build around the software you already use: TaxDome, Karbon, Canopy, Practice CS, and others.' },
-              { n: '03 · REFINE', t: '3-month optimization', d: 'Real usage surfaces edge cases. We iterate until every workflow runs cleanly without anyone babysitting it.' },
-              { n: '04 · SUSTAIN', t: 'Ongoing maintenance', d: 'After your 3-month engagement closes, a low monthly retainer keeps everything monitored, updated, and running without you thinking about it.' },
+              { n: '03 · BUILD', t: 'Custom build', d: 'Your workflow is built, connected to your existing tools, and tested with real data. Delivered in 1–2 weeks depending on complexity.' },
+              { n: '04 · SUSTAIN', t: 'Ongoing maintenance', d: 'A flat monthly retainer per workflow keeps everything monitored, updated, and running. Cancel anytime with 30 days notice.' },
             ].map(s => (
               <div className="how-step" key={s.n}>
                 <div className="how-step-num">{s.n}</div>
@@ -638,44 +638,53 @@ export default function Home() {
         <div className="container">
           <span className="eyebrow">Pricing</span>
           <div className="section-header">
-            <h2 className="section-title">Outcome-based pricing.<br />Built around what your firm actually needs.</h2>
-            <p className="section-sub">Three tiers. A defined build and optimization period. A simple monthly retainer after. No surprises.</p>
+            <h2 className="section-title">Simple, transparent pricing.<br />The more you build, the better the value.</h2>
+            <p className="section-sub">Per-workflow pricing that rewards commitment. 50% upfront to begin, 50% plus first month maintenance at delivery. No long-term contracts.</p>
           </div>
           <div className="pricing-grid">
             {[
               {
-                tier: 'Starter', price: '$1,500', desc: <><strong>1 workflow</strong> — built &amp; fully optimized</>,
-                features: ['1 custom automation, fully built', '3-month optimization period', 'Unlimited iterations during engagement', 'Documentation & process guide'],
-                min: '$4,500 total', maint: '$300/mo', featured: false,
+                tier: 'Starter',
+                price: '$2,500',
+                desc: <>Your <strong>1st workflow</strong> — fully built &amp; delivered</>,
+                features: ['Custom automation built for your firm', 'Connected to your existing tools', 'Tested with real data before delivery', 'Documentation included', '50% upfront · 50% at delivery'],
+                maint: '$250/mo',
+                featured: false,
               },
               {
-                tier: 'Growth', price: '$2,500', desc: <><strong>2 workflows</strong> — built &amp; fully optimized</>,
-                features: ['2 custom automations, fully built', '3-month optimization period', 'Unlimited iterations during engagement', 'Documentation & process guide', 'Priority support response'],
-                min: '$7,500 total', maint: '$500/mo', featured: true,
+                tier: 'Growth',
+                price: '$4,500',
+                desc: <>Your <strong>1st + 2nd workflow</strong> — fully built &amp; delivered</>,
+                features: ['2 custom automations built for your firm', 'Connected to your existing tools', 'Tested with real data before delivery', 'Documentation included', '50% upfront · 50% at delivery'],
+                maint: '$450/mo',
+                featured: true,
               },
               {
-                tier: 'Full Practice', price: '$4,000', desc: <><strong>4 workflows</strong> — built &amp; fully optimized</>,
-                features: ['4 custom automations, fully built', '3-month optimization period', 'Unlimited iterations during engagement', 'Documentation & process guide', 'Priority support response', 'Quarterly workflow review call'],
-                min: '$12,000 total', maint: '$700/mo', featured: false,
+                tier: 'Full Practice',
+                price: '$7,000',
+                desc: <>Your <strong>1st through 4th workflow</strong> — fully built &amp; delivered</>,
+                features: ['4 custom automations built for your firm', 'Connected to your existing tools', 'Tested with real data before delivery', 'Documentation included', '50% upfront · 50% at delivery'],
+                maint: '$775/mo',
+                featured: false,
               },
             ].map(p => (
               <div key={p.tier} className={`pricing-card${p.featured ? ' featured' : ''}`}>
                 {p.featured && <div className="featured-pill">Most Popular</div>}
                 <div className="pricing-tier">{p.tier}</div>
-                <div className="pricing-price">{p.price}<sub>/mo</sub></div>
+                <div className="pricing-price">{p.price}<sub> build fee</sub></div>
                 <div className="pricing-desc">{p.desc}</div>
                 <ul className="pricing-features">
                   {p.features.map(f => <li key={f}>{f}</li>)}
                 </ul>
                 <div className="pricing-meta">
-                  <div className="pricing-meta-row"><span className="lbl">3-month minimum</span><span className="val">{p.min}</span></div>
-                  <div className="pricing-meta-row"><span className="lbl">Monthly retainer after</span><span className="val hi">{p.maint}</span></div>
+                  <div className="pricing-meta-row"><span className="lbl">Monthly maintenance</span><span className="val hi">{p.maint}</span></div>
+                  <div className="pricing-meta-row"><span className="lbl">Additional workflows</span><span className="val">from $1,000 each</span></div>
                 </div>
               </div>
             ))}
           </div>
           <div className="pricing-note">
-            <strong>Why a 3-month minimum?</strong> Building a workflow takes a week. Building one that runs reliably without supervision — across every edge case your firm throws at it — takes three months of real usage and iteration. The minimum protects you, not us. A workflow that breaks in month 4 isn&apos;t a finished workflow.
+            <strong>How workflow pricing works:</strong> Your 1st workflow is $2,500. Your 2nd is $2,000. Your 3rd is $1,500. Every workflow after that is $1,000 each. The more you build, the better the per-workflow value — because by workflow 4 we already know your firm, your tools, and your processes inside out. Maintenance is $250/month for your 1st workflow, adding $200, $175, and $150 for each subsequent workflow. Cancel anytime with 30 days notice.
           </div>
           <div className="pricing-cta">
             <div className="pricing-cta-inner">
@@ -766,11 +775,11 @@ export default function Home() {
           <div className="faq-grid">
             {[
               { q: 'Do I need to change the software my firm already uses?', a: "No. We build around the tools you're already paying for — TaxDome, Karbon, Canopy, Practice CS, and others. Nothing gets ripped out. In most cases we're making your existing software work the way you originally hoped it would." },
-              { q: 'What does the 3-month minimum actually mean?', a: "It means you get three full months of build, testing, and refinement — not just a handoff on day 30. Edge cases get caught and fixed before the engagement closes." },
-              { q: 'What happens if I want to stop after 3 months?', a: "After your engagement closes you move to a simple monthly retainer — $300, $500, or $700 depending on your tier. If you ever want to wind down, just give us 30 days notice. Everything built is documented so nothing disappears." },
+              { q: 'How quickly are workflows delivered?', a: "Most single workflows are delivered within 1–2 weeks of kickoff. Larger engagements with multiple workflows are delivered sequentially — typically one every 1–2 weeks. You start seeing results quickly rather than waiting months." },
+              { q: 'What happens if I want to stop the maintenance?', a: "Cancel anytime with 30 days notice. Everything built is yours — fully documented so you or anyone else can maintain it. There's no lock-in." },
               { q: 'How long does it take to see results?', a: "Most firms see time savings from the first workflow within 2–3 weeks of it going live. Document collection and deadline reminders produce the fastest, most visible results." },
               { q: "What's a \"workflow\" exactly?", a: "A workflow is a defined, automated process — for example: when a new engagement letter is signed, automatically send the client a welcome packet and document checklist. One trigger, one outcome, running without staff involvement." },
-              { q: 'Is this right for a solo practitioner or only larger firms?', a: "Both. Solo and small firms (2–15 staff) often benefit the most because the time savings hit harder when there are fewer people absorbing the manual load. The Starter tier is designed with that in mind." },
+              { q: 'Is this right for a solo practitioner or only larger firms?', a: "Both. Solo and small firms (2–15 staff) often benefit the most because the time savings hit harder when there are fewer people absorbing the manual load. Starting with a single workflow at $2,500 is a low-risk way to see real results before expanding." },
             ].map(f => (
               <div key={f.q} className="faq-item">
                 <h4>{f.q}</h4>
