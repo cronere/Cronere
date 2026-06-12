@@ -1,6 +1,6 @@
 'use client'
 
-const CALENDLY = 'https://calendly.com/jacob-merkley'
+const CALENDLY = 'https://calendly.com/jacobmerkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
 
 const LogoMark = ({ size = 28 }) => (
@@ -39,7 +39,7 @@ const videos = [
     pain: 'Most firms spend 20–30 minutes drafting each engagement letter manually.',
     outcome: 'A 2-minute form submission triggers AI to generate a complete, professional letter — formatted in Google Docs and sent for e-signature automatically.',
     stat: 'Saves 40–100 hrs/year for most firms',
-    loomId: 'https://www.youtube.com/watch?v=uTLLt0ebMc4',
+    loomId: 'REPLACE_WITH_LOOM_ID_1',
     tags: ['Make.com', 'Claude AI', 'Google Docs', 'HelloSign'],
   },
   {
@@ -333,7 +333,7 @@ export default function Demo() {
               <div className="stat-label">live workflow demos</div>
             </div>
             <div>
-              <div className="stat-num">~6<span>min</span></div>
+              <div className="stat-num">~9<span>min</span></div>
               <div className="stat-label">total watch time</div>
             </div>
             <div>
@@ -385,7 +385,7 @@ export default function Demo() {
                 </div>
               ) : (
                 <iframe
-                  src={`https://www.loom.com/embed/${v.loomId}?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true`}
+                  src={`https://www.youtube.com/embed/${v.loomId}?rel=0&modestbranding=1`}
                   allowFullScreen
                   title={v.title}
                 />
