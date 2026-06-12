@@ -39,7 +39,7 @@ const videos = [
     pain: 'Most firms spend 20–30 minutes drafting each engagement letter manually.',
     outcome: 'A 2-minute form submission triggers AI to generate a complete, professional letter — formatted in Google Docs and sent for e-signature automatically.',
     stat: 'Saves 40–100 hrs/year for most firms',
-    loomId: 'REPLACE_WITH_LOOM_ID_1',
+    loomId: 'https://www.youtube.com/watch?v=uTLLt0ebMc4',
     tags: ['Make.com', 'Claude AI', 'Google Docs', 'HelloSign'],
   },
   {
