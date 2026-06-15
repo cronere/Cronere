@@ -36,33 +36,33 @@ const videos = [
     num: '01',
     title: 'Engagement Letter Auto-Generation',
     duration: '~4 min',
-    pain: 'Most firms spend 20–30 minutes drafting each engagement letter manually.',
-    outcome: 'A staff intake form triggers AI to generate a complete, professional letter — formatted in Google Docs and sent for e-signature automatically.',
+    pain: 'Most firms spend 20–30 minutes drafting each engagement letter manually — then chase the client for a signature.',
+    outcome: 'A staff intake form triggers AI to generate a complete, professional letter tailored by service type. A data filter strips PII before anything reaches AI. The letter lands in Google Docs and goes to the client for e-signature automatically.',
     stat: 'Saves 40–100 hrs/year for most firms',
     loomId: 'uTLLt0ebMc4',
-    tags: ['Make.com', 'Claude AI', 'Google Docs', 'HelloSign'],
+    tags: ['Make.com', 'Claude AI', 'Google Docs', 'Adobe Sign / DocuSign', 'Section 7216 Compliant'],
   },
   {
     id: 'client-onboarding',
     num: '02',
     title: 'New Client Onboarding Sequence',
     duration: '~2 min',
-    pain: 'Onboarding is handled differently every time depending on who picks it up.',
-    outcome: 'The moment an engagement letter is signed, a welcome email, document checklist, and staff notification fire automatically — with follow-ups built in.',
+    pain: 'Onboarding is handled differently every time depending on who picks it up — inconsistent experience, missed steps, no paper trail.',
+    outcome: 'The moment an engagement letter is signed, a welcome email, service-specific document checklist, and staff notification fire automatically. Every client gets the same excellent experience every time.',
     stat: 'Consistent onboarding, every client, every time',
     loomId: 'REPLACE_WITH_LOOM_ID_2',
-    tags: ['Make.com', 'Gmail/Outlook', 'DocuSign', 'Airtable'],
+    tags: ['Make.com', 'Gmail / Outlook', 'Adobe Sign / DocuSign', 'Google Sheets'],
   },
   {
     id: 'document-reminders',
     num: '03',
-    title: 'Document Collection Reminders',
+    title: 'Document Collection Reminder Sequence',
     duration: '~2 min',
-    pain: 'Manually chasing clients for documents eats 5–8 hours a month during tax season.',
-    outcome: 'Four-stage escalating reminders fire automatically at 7, 3, 1 day out, and on the due date — nobody on your team has to remember to send anything.',
+    pain: 'Manually chasing clients for documents eats 5–8 hours a month during tax season — and clients who already submitted still get reminded.',
+    outcome: 'Before any reminder fires, the system checks your client portal API to confirm documents haven\'t been received. If they have — nothing sends. If they haven\'t — an escalating reminder fires automatically at 14, 7, 3, and 1 day out.',
     stat: 'Saves 5–8 hrs/month during tax season',
     loomId: 'REPLACE_WITH_LOOM_ID_3',
-    tags: ['Make.com', 'Gmail/Outlook', 'Any PM Tool', 'Airtable'],
+    tags: ['Make.com', 'Gmail / Outlook', 'SmartVault / TaxDome API', 'Google Sheets'],
   },
 ]
 
@@ -325,7 +325,7 @@ export default function Demo() {
             <div className="hero-dot" />
             <span>Live workflow demos — CPA &amp; Accounting Firms</span>
           </div>
-          <h1>See it working.<br />Three workflows, <em>six minutes.</em></h1>
+          <h1>See it working.<br />Three workflows, <em>nine minutes.</em></h1>
           <p>Three live Make.com automations built specifically for CPA and accounting firms. Watch them run — then book a call to see what we&apos;d build for yours.</p>
           <div className="hero-stats">
             <div>
@@ -341,6 +341,20 @@ export default function Demo() {
               <div className="stat-label">to book a discovery call</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* COMPLIANCE BADGE */}
+      <div style={{textAlign: 'center', padding: '0 1.5rem 2rem'}}>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: '8px',
+          background: 'rgba(79,142,247,0.08)', border: '1px solid rgba(79,142,247,0.2)',
+          borderRadius: '100px', padding: '8px 18px', fontSize: '13px', color: '#8a9ab5'
+        }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F8EF7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>All workflows built to <strong style={{color: '#e4e8f0'}}>Section 7216 compliance standards</strong> — client data never leaves your environment</span>
         </div>
       </div>
 
