@@ -513,7 +513,7 @@ export default function Home() {
             Stop wasting it on <em>manual work.</em>
           </h1>
           <p className="hero-sub">
-            Cronere builds and manages AI-powered workflows that eliminate the repetitive back-office tasks eating your team's hours — so you focus on clients, not administrivia.
+            Cronere builds and manages AI-powered workflows and agents that eliminate the repetitive back-office tasks eating your team's hours — so you focus on clients, not administrivia.
           </p>
           <div className="hero-actions">
             <a href={CALENDLY} target="_blank" rel="noreferrer" className="btn-primary">
@@ -568,8 +568,23 @@ export default function Home() {
         <div className="container">
           <span className="eyebrow">What gets automated</span>
           <div className="section-header">
-            <h2 className="section-title">The work that runs your firm in the background.</h2>
-            <p className="section-sub">These are the workflows most CPA and accounting firms start with — highest time savings, least disruption.</p>
+            <h2 className="section-title">The workflows and agents that run<br/>your firm in the background.</h2>
+            <p className="section-sub">These are the automations most CPA and accounting firms start with — highest time savings, least disruption.</p>
+          </div>
+
+          <div className="workflow-cat">AI Agents</div>
+          <div className="workflow-grid">
+            {[
+              { t: 'Email Triage & Draft Agent', d: 'Reads incoming client and staff emails, classifies by type, and drafts responses for one-click review and sending. Handles routine inquiries automatically — you approve everything else in seconds.', s: 'Saves 2–4 hrs/day for firm owners' },
+              { t: 'Document Intake & Review Agent', d: 'Monitors your client portal for incoming documents, splits combined PDFs into individual files, categorizes each document, cross-references against what\'s needed, and automatically requests outstanding items from clients.', s: 'Eliminates manual document review entirely' },
+              { t: 'Timesheet Analysis Agent', d: 'Reads staff timesheets weekly, identifies inefficiencies and missed follow-ups, and sends each team member a personalized to-do list. Sends management a summary report with productivity insights.', s: 'Saves 3–5 hrs/week in staff management' },
+            ].map(w => (
+              <div className="workflow-card" key={w.t}>
+                <h4>{w.t}</h4>
+                <p>{w.d}</p>
+                <div className="workflow-save">{w.s}</div>
+              </div>
+            ))}
           </div>
 
           <div className="workflow-cat">Client Onboarding &amp; Intake</div>
@@ -691,8 +706,8 @@ export default function Home() {
             <div className="price-table-wrap" style={{marginTop: '1.5rem'}}>
               <div className="price-table-header">
                 <div>
-                  <div className="price-table-eye">Maintenance Fee Schedule</div>
-                  <div className="price-table-title">Monthly, charged in advance at delivery</div>
+                  <div className="price-table-eye">Maintenance Retainer Schedule</div>
+                  <div className="price-table-title">Monthly retainer, charged in advance at delivery</div>
                 </div>
                 <div className="price-table-note">Cancel anytime · 30 days notice</div>
               </div>
@@ -700,7 +715,7 @@ export default function Home() {
                 <thead>
                   <tr>
                     <th>Workflows maintained</th>
-                    <th>Monthly fee</th>
+                    <th>Monthly retainer</th>
                     <th>Added this workflow</th>
                     <th>Avg per workflow</th>
                   </tr>
@@ -726,7 +741,7 @@ export default function Home() {
           </div>
 
           <div className="pricing-note" style={{marginTop: '1.5rem'}}>
-            <strong>What maintenance covers:</strong> Monitoring all workflows for errors, adjusting workflows for best practices amid an ever-changing AI landscape, minor tweaks when your firm&apos;s processes evolve, and priority support when something needs attention. Your workflows keep running cleanly without you thinking about them.
+            <strong>What your monthly retainer covers:</strong> Monitoring all workflows and agents for errors, adjusting for best practices amid an ever-changing AI landscape, minor tweaks when your firm&apos;s processes evolve, monthly performance reports, and priority support when something needs attention. Your systems keep running cleanly without you thinking about them.
           </div>
 
           <div className="pricing-cta">
@@ -763,7 +778,7 @@ export default function Home() {
                 { icon: '🎓', title: 'MBA + Bachelor\'s in Accounting', desc: 'Deep fluency in how CPA firms operate, think, and bill — not just how to automate them.' },
                 { icon: '🏢', title: '15 Years in Accounting & Operations', desc: 'Recruiting and working alongside finance and accounting teams at hundreds of firms.' },
                 { icon: '⚙️', title: 'Full-Stack AI Builder', desc: 'Make.com, Supabase, Claude API, Next.js — the tools that actually get workflows into production.' },
-                { icon: '📋', title: 'Simple Ongoing Retainer', desc: 'After your engagement closes, a flat monthly retainer keeps everything monitored, updated, and running. No surprises.' },
+                { icon: '📋', title: 'Simple Monthly Retainer', desc: 'After your build is delivered, a flat monthly retainer keeps everything monitored, updated, and running. No surprises, no subscriptions.' },
               ].map(c => (
                 <div key={c.title} className="cred">
                   <div className="cred-icon">{c.icon}</div>
@@ -819,7 +834,7 @@ export default function Home() {
             {[
               { q: 'Do I need to change the software my firm already uses?', a: "No. We build around the tools you're already paying for — TaxDome, Karbon, Canopy, Practice CS, and others. Nothing gets ripped out. In most cases we're making your existing software work the way you originally hoped it would." },
               { q: 'How quickly are workflows delivered?', a: "Most single workflows are delivered within 1–2 weeks of kickoff. Larger engagements with multiple workflows are delivered sequentially — typically one every 1–2 weeks. You start seeing results quickly rather than waiting months." },
-              { q: 'What happens if I want to stop the maintenance?', a: "Cancel anytime with 30 days notice. Everything built is yours — fully documented so you or anyone else can maintain it. There's no lock-in." },
+              { q: 'What happens if I want to stop the maintenance retainer?', a: "Cancel anytime with 30 days notice. This is a retainer relationship, not a subscription — you're paying for an expert who actively monitors and maintains your systems, not just access to software. Everything built is yours and fully documented." },
               { q: 'How long does it take to see results?', a: "Most firms see time savings from the first workflow within 2–3 weeks of it going live. Document collection and deadline reminders produce the fastest, most visible results." },
               { q: "What's a \"workflow\" exactly?", a: "A workflow is a defined, automated process — for example: when a new engagement letter is signed, automatically send the client a welcome packet and document checklist. One trigger, one outcome, running without staff involvement." },
               { q: 'Is this right for a solo practitioner or only larger firms?', a: "Both. Solo and small firms (2–15 staff) often benefit the most because the time savings hit harder when there are fewer people absorbing the manual load. Starting with a single workflow at $2,500 is a low-risk way to see real results before expanding." },
