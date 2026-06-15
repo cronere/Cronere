@@ -1,6 +1,6 @@
 'use client'
 
-const CALENDLY = 'https://calendly.com/jacobmerkley'
+const CALENDLY = 'https://calendly.com/jacob-merkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
 
 const LogoMark = ({ size = 28 }) => (
@@ -37,9 +37,9 @@ const videos = [
     title: 'Engagement Letter Auto-Generation',
     duration: '~4 min',
     pain: 'Most firms spend 20–30 minutes drafting each engagement letter manually.',
-    outcome: 'A 4-minute form submission triggers AI to generate a complete, professional letter — formatted in Google Docs and sent for e-signature automatically.',
+    outcome: 'A staff intake form triggers AI to generate a complete, professional letter — formatted in Google Docs and sent for e-signature automatically.',
     stat: 'Saves 40–100 hrs/year for most firms',
-    loomId: 'https://www.youtube.com/watch?v=uTLLt0ebMc4',
+    loomId: 'uTLLt0ebMc4',
     tags: ['Make.com', 'Claude AI', 'Google Docs', 'HelloSign'],
   },
   {
@@ -386,6 +386,7 @@ export default function Demo() {
               ) : (
                 <iframe
                   src={`https://www.youtube.com/embed/${v.loomId}?rel=0&modestbranding=1`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title={v.title}
                 />
