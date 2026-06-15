@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const CALENDLY = 'https://calendly.com/jacobmerkley'
+const CALENDLY = 'https://calendly.com/jacob-merkley'
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
 
 const LogoMark = ({ size = 32 }) => (
@@ -646,6 +646,7 @@ export default function Home() {
           <div className="section-header">
             <h2 className="section-title">Simple, transparent pricing.<br />The more you build, the better the value.</h2>
             <p className="section-sub">Per-workflow pricing with no long-term contracts. 50% upfront to begin, 50% plus first month maintenance at delivery.</p>
+            <p style={{fontSize: '16px', color: 'var(--green)', marginTop: '0.75rem', fontWeight: '500'}}>Most firms recover the cost of their first workflow within 90 days — purely from staff time saved.</p>
           </div>
 
           <div className="pricing-tables">
@@ -706,10 +707,10 @@ export default function Home() {
                 </thead>
                 <tbody>
                   {[
-                    { wf: '1 workflow', monthly: '$250/mo', added: '+$250', avg: '$250', highlight: false },
-                    { wf: '2 workflows', monthly: '$450/mo', added: '+$200', avg: '$225', highlight: false },
-                    { wf: '3 workflows', monthly: '$625/mo', added: '+$175', avg: '$208', highlight: false },
-                    { wf: '4th+ workflow', monthly: '$775/mo +$150 each', added: '+$150 each', avg: 'from $194', highlight: true },
+                    { wf: '1 workflow', monthly: '$300/mo', added: '+$300', avg: '$300', highlight: false },
+                    { wf: '2 workflows', monthly: '$550/mo', added: '+$250', avg: '$275', highlight: false },
+                    { wf: '3 workflows', monthly: '$750/mo', added: '+$200', avg: '$250', highlight: false },
+                    { wf: '4th+ workflow', monthly: '$750/mo +$175 each', added: '+$175 each', avg: 'from $238', highlight: true },
                   ].map(r => (
                     <tr key={r.wf} className={r.highlight ? 'row-highlight' : ''}>
                       <td className="td-main">{r.wf}</td>
