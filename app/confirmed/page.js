@@ -1,6 +1,6 @@
 'use client'
 
-const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
+const LINKEDIN = 'https://www.linkedin.com/in/jacob-merkley/'
 const CALENDLY = 'https://calendly.com/jacob-merkley'
 
 const LogoMark = ({ size = 28 }) => (
