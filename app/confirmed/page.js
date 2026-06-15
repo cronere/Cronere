@@ -260,30 +260,30 @@ export default function Confirmed() {
           <span className="confirm-eyebrow">You&apos;re on the calendar</span>
           <h1 className="confirm-h1">Your discovery call is booked.</h1>
           <p className="confirm-sub">
-            A confirmation email is on its way. In the meantime, here&apos;s what to expect and how to make the most of the 30 minutes.
+            A confirmation email is on its way. Here&apos;s exactly what happens from here — including what comes after the call.
           </p>
         </div>
 
         <div className="divider" />
 
         {/* WHAT TO EXPECT */}
-        <span className="section-label">What to expect on the call</span>
+        <span className="section-label">What happens next</span>
         <div className="expect-list">
           {[
             {
               n: '01',
-              t: 'We map your firm\'s current workflow',
-              d: 'A few questions about how your team operates today — what software you use, where time is being lost, what\'s handled manually that probably shouldn\'t be.'
+              t: 'We meet for 30 minutes',
+              d: 'We map your firm\'s current workflows — what software you use, where time is being lost, what\'s handled manually that shouldn\'t be. No pitch, just a real conversation about how your firm operates.'
             },
             {
               n: '02',
-              t: 'I identify the highest-impact starting points',
-              d: 'Based on what you share, I\'ll call out the 2–3 workflows that would reclaim the most time for your firm with the least disruption to implement.'
+              t: 'You receive your Cronere Workflow Blueprint',
+              d: 'Within 48 hours of our call, I\'ll send you a custom proposal outlining exactly what I\'d build for your firm — the specific workflows, how each one works, the compliance architecture, and what the engagement looks like. No generic decks.'
             },
             {
               n: '03',
-              t: 'You get a clear next step — no pressure',
-              d: 'If it makes sense to move forward, I\'ll outline exactly what that looks like. If it\'s not the right fit, I\'ll tell you that too. No hard close, no follow-up sequence.'
+              t: 'We schedule a kickoff call if it\'s a fit',
+              d: 'If the Blueprint looks good, we schedule a brief kickoff call and get started on your first workflow within the week. If it\'s not the right fit, I\'ll tell you that too. No pressure, no follow-up sequence.'
             },
           ].map(e => (
             <div key={e.n} className="expect-item">
@@ -306,9 +306,9 @@ export default function Confirmed() {
           </p>
           <div className="prep-questions">
             {[
-              'What practice management software your firm currently uses (TaxDome, Karbon, Canopy, Practice CS, or other)',
-              'Which manual task eats the most time during tax season',
-              'Roughly how many people are on your team',
+              'What practice management software your firm currently uses (TaxDome, Karbon, Canopy, Practice CS, UltraTax, or other)',
+              'Which manual task eats the most time for you or your staff right now',
+              'Roughly how many people are on your team and how many clients you serve',
             ].map(q => (
               <div key={q} className="prep-q">{q}</div>
             ))}
