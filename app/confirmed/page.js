@@ -1,7 +1,7 @@
 'use client'
 
 const LINKEDIN = 'https://www.linkedin.com/in/jacobmerkley/'
-const CALENDLY = 'https://calendly.com/jacobmerkley'
+const CALENDLY = 'https://calendly.com/jacob-merkley'
 
 const LogoMark = ({ size = 28 }) => (
   <svg width={size} height={size} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
