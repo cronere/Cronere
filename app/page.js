@@ -473,7 +473,7 @@ export default function Home() {
         <div className="nav-links">
           <a href="#how">How it works</a>
           <a href="#workflows">Workflows</a>
-          <a href="/demo">See demos</a>
+          <a href="/#pricing">Pricing</a>
           <a href="#pricing">Pricing</a>
           <a href="#about">About</a>
           <a href="#faq">FAQ</a>
@@ -492,7 +492,6 @@ export default function Home() {
       <div className={`mobile-drawer${menuOpen ? ' open' : ''}`}>
         <a href="#how" onClick={closeMenu}>How it works</a>
         <a href="#workflows" onClick={closeMenu}>Workflows</a>
-        <a href="/demo" onClick={closeMenu}>See demos</a>
         <a href="#pricing" onClick={closeMenu}>Pricing</a>
         <a href="#about" onClick={closeMenu}>About</a>
         <a href="#faq" onClick={closeMenu}>FAQ</a>
@@ -643,13 +642,6 @@ export default function Home() {
                 <div className="workflow-save">{w.s}</div>
               </div>
             ))}
-          </div>
-          <div className="demo-banner">
-            <div className="demo-banner-text">
-              <h3>Want to see these workflows running live?</h3>
-              <p>Three short video demos — real Make.com automations built for CPA firms, running with live dummy data.</p>
-            </div>
-            <a href="/demo" className="btn-demo">Watch the demos →</a>
           </div>
         </div>
       </section>
