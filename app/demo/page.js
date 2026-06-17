@@ -39,30 +39,30 @@ const videos = [
     pain: 'Most firms spend 20–30 minutes drafting each engagement letter manually — then chase the client for a signature.',
     outcome: 'A staff intake form triggers AI to generate a complete, professional letter tailored by service type. A data filter strips PII before anything reaches AI. The letter lands in Google Docs and goes to the client for e-signature automatically.',
     stat: 'Saves 40–100 hrs/year for most firms',
-    loomId: 'uTLLt0ebMc4',
+    loomId: 'tJ0jdDvp7a8',
     tags: ['Make.com', 'Claude AI', 'Google Docs', 'Adobe Sign / DocuSign', 'Section 7216 Compliant'],
   },
   {
     id: 'client-onboarding',
     num: '02',
     title: 'New Client Onboarding Sequence',
-    duration: '~2 min',
+    duration: '~3 min',
     pain: 'Onboarding is handled differently every time depending on who picks it up — inconsistent experience, missed steps, no paper trail.',
     outcome: 'The moment an engagement letter is signed, a welcome email, service-specific document checklist, and staff notification fire automatically. Every client gets the same excellent experience every time.',
     stat: 'Consistent onboarding, every client, every time',
-    loomId: 'REPLACE_WITH_LOOM_ID_2',
+    loomId: 'eh-txp8SQW8',
     tags: ['Make.com', 'Gmail / Outlook', 'Adobe Sign / DocuSign', 'Google Sheets'],
   },
   {
     id: 'document-reminders',
     num: '03',
-    title: 'Document Collection Reminder Sequence',
-    duration: '~2 min',
+    title: 'Document Collection & Intake Sequence',
+    duration: '~4 min',
     pain: 'Manually chasing clients for documents eats 5–8 hours a month during tax season — and clients who already submitted still get reminded.',
-    outcome: 'Before any reminder fires, the system checks your client portal API to confirm documents haven\'t been received. If they have — nothing sends. If they haven\'t — an escalating reminder fires automatically at 14, 7, 3, and 1 day out.',
+    outcome: 'Documents are automatically downloaded, split, and categorized. AI reviews completeness against the prior year return. If documents are complete, staff is notified. If not, an escalating reminder sequence fires at 14, 7, 3, and 1 day out — automatically.',
     stat: 'Saves 5–8 hrs/month during tax season',
-    loomId: 'REPLACE_WITH_LOOM_ID_3',
-    tags: ['Make.com', 'Gmail / Outlook', 'SmartVault / TaxDome API', 'Google Sheets'],
+    loomId: 'EQl2YaqC170',
+    tags: ['Make.com', 'PDF.co', 'Claude AI', 'SmartVault / TaxDome API', 'Section 7216 Compliant'],
   },
 ]
 
@@ -325,7 +325,7 @@ export default function Demo() {
             <div className="hero-dot" />
             <span>Live workflow demos — CPA &amp; Accounting Firms</span>
           </div>
-          <h1>See it working.<br />Three workflows, <em>nine minutes.</em></h1>
+          <h1>See it working.<br />Three workflows, <em>eleven minutes.</em></h1>
           <p>Three live Make.com automations built specifically for CPA and accounting firms. Watch them run — then book a call to see what we&apos;d build for yours.</p>
           <div className="hero-stats">
             <div>
@@ -333,7 +333,7 @@ export default function Demo() {
               <div className="stat-label">live workflow demos</div>
             </div>
             <div>
-              <div className="stat-num">~9<span>min</span></div>
+              <div className="stat-num">~11<span>min</span></div>
               <div className="stat-label">total watch time</div>
             </div>
             <div>
