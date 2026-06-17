@@ -59,7 +59,7 @@ const videos = [
     title: 'Document Collection & Intake Sequence',
     duration: '~4 min',
     pain: 'Manually chasing clients for documents eats 5–8 hours a month during tax season — and clients who already submitted still get reminded.',
-    outcome: 'Documents are automatically downloaded, split, and categorized. AI reviews completeness against the prior year return. If documents are complete, staff is notified. If not, an escalating reminder sequence fires at 14, 7, 3, and 1 day out — automatically.',
+    outcome: 'Documents are automatically downloaded, split, and categorized. AI reviews completeness against the prior year return. If documents are complete, staff is notified. If not, an escalating reminder sequence fires automatically.',
     stat: 'Saves 5–8 hrs/month during tax season',
     loomId: 'EQl2YaqC170',
     tags: ['Make.com', 'PDF.co', 'Claude AI', 'SmartVault / TaxDome API', 'Section 7216 Compliant'],
