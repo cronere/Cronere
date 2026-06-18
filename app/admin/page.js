@@ -16,7 +16,7 @@ const STAGES = [
 const EMPTY_LEAD = {
   id: null, name: '', firm: '', email: '', phone: '', stage: 'lead',
   source: '', notes: '', workflows: '', fee: '', retainer: '',
-  tasks: [], createdAt: null, updatedAt: null,
+  referredBy: '', tasks: [], createdAt: null, updatedAt: null,
 };
 
 const SOURCES = ['LinkedIn', 'Cold Email', 'Referral', 'Inbound', 'Discovery Call', 'Other'];
@@ -257,6 +257,9 @@ export default function AdminCRM() {
                           style={{ background: '#131b2e', border: '1px solid #1a2340', borderRadius: 6, padding: '10px 12px', cursor: 'pointer', opacity: dragging === lead.id ? 0.5 : 1, transition: 'opacity 0.15s' }}>
                           <div style={{ fontSize: 13, fontWeight: 600, color: '#e4e8f0', marginBottom: 2 }}>{lead.name || 'Unnamed'}</div>
                           <div style={{ fontSize: 11, color: '#8a9ab5', marginBottom: 6 }}>{lead.firm}</div>
+                          {lead.referredBy && (
+                            <div style={{ fontSize: 10, color: '#F5A623', marginBottom: 4 }}>↳ Ref: {lead.referredBy}</div>
+                          )}
                           {(lead.tasks || []).filter(t => !t.done).length > 0 && (
                             <div style={{ fontSize: 10, color: '#F5A623' }}>↳ {(lead.tasks || []).filter(t => !t.done).length} open task{(lead.tasks || []).filter(t => !t.done).length > 1 ? 's' : ''}</div>
                           )}
@@ -386,6 +389,12 @@ export default function AdminCRM() {
                     ))}
                   </div>
                   <div style={{ marginBottom: 14 }}>
+                    <label style={{ fontSize: 11, color: '#4f5f74', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', display: 'block', marginBottom: 5 }}>Referred By</label>
+                    <input value={form.referredBy || ''} onChange={e => setForm(f => ({ ...f, referredBy: e.target.value }))}
+                      placeholder="Name of person who referred this lead"
+                      style={{ width: '100%', background: '#131b2e', border: '1px solid #1a2340', borderRadius: 6, padding: '8px 10px', fontSize: 13, color: '#e4e8f0', outline: 'none', boxSizing: 'border-box' }} />
+                  </div>
+                  <div style={{ marginBottom: 14 }}>
                     <label style={{ fontSize: 11, color: '#4f5f74', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', display: 'block', marginBottom: 5 }}>Workflows Discussed</label>
                     <input value={form.workflows || ''} onChange={e => setForm(f => ({ ...f, workflows: e.target.value }))}
                       placeholder="e.g. Engagement letters, document intake"
@@ -442,6 +451,7 @@ export default function AdminCRM() {
                         ['Email', selected.email],
                         ['Phone', selected.phone],
                         ['Source', selected.source],
+                        ['Referred By', selected.referredBy],
                         ['Workflows', selected.workflows],
                         ['Build Fee', selected.fee],
                         ['Monthly Retainer', selected.retainer],
@@ -539,6 +549,7 @@ export default function AdminCRM() {
               <div style={{ fontSize: 11, color: '#4f5f74', fontWeight: 600, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 10 }}>Summary</div>
               <div style={{ fontSize: 12, color: '#8a9ab5', marginBottom: 4 }}>Total leads: <span style={{ color: '#e4e8f0', fontWeight: 600 }}>{leads.length}</span></div>
               <div style={{ fontSize: 12, color: '#8a9ab5', marginBottom: 4 }}>Active clients: <span style={{ color: '#34d399', fontWeight: 600 }}>{stageCounts.active + stageCounts.retainer}</span></div>
+              <div style={{ fontSize: 12, color: '#8a9ab5', marginBottom: 4 }}>Referred leads: <span style={{ color: '#F5A623', fontWeight: 600 }}>{leads.filter(l => l.referredBy).length}</span></div>
               <div style={{ fontSize: 12, color: '#8a9ab5' }}>Overdue tasks: <span style={{ color: overdueTasks.length > 0 ? '#ef4444' : '#4f5f74', fontWeight: 600 }}>{overdueTasks.length}</span></div>
             </div>
           </div>
