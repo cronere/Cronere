@@ -57,11 +57,28 @@ export default function AdminCRM() {
   const [confirmDelete, setConfirmDelete] = useState(null);
   const loaded = useRef(false);
 
-  // Load from storage
+  // Load auth from storage
   useEffect(() => {
     const stored = localStorage.getItem('cronere_admin_auth');
     if (stored === 'true') setAuth(true);
   }, []);
+
+  // Load leads from storage
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('cronere_crm_leads');
+      if (stored) setLeads(JSON.parse(stored));
+    } catch(e) {}
+    loaded.current = true;
+  }, []);
+
+  // Save leads to storage
+  useEffect(() => {
+    if (!loaded.current) return;
+    try {
+      localStorage.setItem('cronere_crm_leads', JSON.stringify(leads));
+    } catch(e) {}
+  }, [leads]);
 
   function submitPassword() {
     if (pw === 'Cronere4you!') {
@@ -100,23 +117,6 @@ export default function AdminCRM() {
       </div>
     );
   }
-
-  // Load leads from storage
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('cronere_crm_leads');
-      if (stored) setLeads(JSON.parse(stored));
-    } catch(e) {}
-    loaded.current = true;
-  }, []);
-
-  // Save leads to storage
-  useEffect(() => {
-    if (!loaded.current) return;
-    try {
-      localStorage.setItem('cronere_crm_leads', JSON.stringify(leads));
-    } catch(e) {}
-  }, [leads]);
 
   function showToast(msg) {
     setToast(msg);
