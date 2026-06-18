@@ -39,6 +39,9 @@ function daysAgo(iso) {
 }
 
 export default function AdminCRM() {
+  const [auth, setAuth] = useState(false);
+  const [pw, setPw] = useState('');
+  const [pwError, setPwError] = useState(false);
   const [leads, setLeads] = useState([]);
   const [view, setView] = useState('pipeline'); // pipeline | list | detail
   const [selected, setSelected] = useState(null);
@@ -56,6 +59,50 @@ export default function AdminCRM() {
 
   // Load from storage
   useEffect(() => {
+    const stored = localStorage.getItem('cronere_admin_auth');
+    if (stored === 'true') setAuth(true);
+  }, []);
+
+  function submitPassword() {
+    if (pw === 'Cronere4you!') {
+      setAuth(true);
+      setPwError(false);
+      try { localStorage.setItem('cronere_admin_auth', 'true'); } catch(e) {}
+    } else {
+      setPwError(true);
+      setPw('');
+    }
+  }
+
+  if (!auth) {
+    return (
+      <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif', background: '#0b0f1a', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ background: '#0f1524', border: '1px solid #1a2340', borderRadius: 12, padding: '40px 36px', width: 320, textAlign: 'center' }}>
+          <div style={{ fontSize: 20, fontWeight: 800, color: '#e4e8f0', letterSpacing: -0.5, marginBottom: 4 }}>
+            CRON<span style={{ color: '#4F8EF7' }}>E</span>RE
+          </div>
+          <div style={{ fontSize: 12, color: '#4f5f74', marginBottom: 28 }}>Admin CRM</div>
+          <input
+            type="password"
+            value={pw}
+            onChange={e => { setPw(e.target.value); setPwError(false); }}
+            onKeyDown={e => e.key === 'Enter' && submitPassword()}
+            placeholder="Password"
+            autoFocus
+            style={{ width: '100%', background: '#131b2e', border: `1px solid ${pwError ? '#ef4444' : '#1a2340'}`, borderRadius: 6, padding: '10px 12px', fontSize: 14, color: '#e4e8f0', outline: 'none', boxSizing: 'border-box', marginBottom: 10, textAlign: 'center', letterSpacing: 2 }}
+          />
+          {pwError && <div style={{ fontSize: 12, color: '#ef4444', marginBottom: 10 }}>Incorrect password</div>}
+          <button onClick={submitPassword}
+            style={{ width: '100%', background: '#F5A623', color: '#0b0f1a', border: 'none', borderRadius: 6, padding: '10px 0', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+            Enter
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Load leads from storage
+  useEffect(() => {
     try {
       const stored = localStorage.getItem('cronere_crm_leads');
       if (stored) setLeads(JSON.parse(stored));
@@ -63,7 +110,7 @@ export default function AdminCRM() {
     loaded.current = true;
   }, []);
 
-  // Save to storage
+  // Save leads to storage
   useEffect(() => {
     if (!loaded.current) return;
     try {
