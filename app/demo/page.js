@@ -410,6 +410,20 @@ export default function Demo() {
         ))}
       </div>
 
+      {/* QR CODE */}
+      <div style={{textAlign: 'center', padding: '3rem 1.5rem 1rem'}}>
+        <div style={{display: 'inline-block', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.5rem 2rem'}}>
+          <div style={{fontSize: '12px', color: 'var(--text-dim)', fontFamily: 'var(--mono)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem'}}>Share this page</div>
+          <img
+            src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://cronere.com/demo&bgcolor=131b2e&color=e4e8f0&margin=10`}
+            alt="QR code for cronere.com/demo"
+            width={160} height={160}
+            style={{borderRadius: '8px', display: 'block', margin: '0 auto 1rem'}}
+          />
+          <div style={{fontSize: '13px', color: 'var(--text-mid)', fontWeight: 500}}>cronere.com/demo</div>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="cta-section">
         <div className="cta-inner">
